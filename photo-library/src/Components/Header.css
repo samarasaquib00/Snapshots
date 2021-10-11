@@ -1,0 +1,18 @@
+.header {
+    display: flex;
+    background-color: lightgrey; 
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.header_left {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.header_right {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}

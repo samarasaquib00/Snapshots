@@ -1,7 +1,7 @@
 .Sidebar{
     height: 100%;
     width: 200px;
-    background-color: darkslategrey;
+    background-color: lightgray;
   }
   
   .SidebarList {
@@ -20,7 +20,7 @@
 
   .SidebarList .row a {
       text-decoration: none;
-      color: white;
+      color: black;
       width: 95%;
       height: 100%;
       display: flex;
@@ -33,11 +33,11 @@
   
   .SidebarList .row:hover {
     cursor: pointer;
-    background-color: #374048;
+    background-color: #696969;
   }
   
   .SidebarList #active {
-    background-color: #374048;
+    background-color: #696969;
   }
 
   span {

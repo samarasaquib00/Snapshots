@@ -1,5 +1,6 @@
 import './App.css';
 import Sidebar from './Components/Sidebar';
+import Header from './Components/Header';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Pages/Home';
 import Albums from './Pages/PhotoAlbum';
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className="App">
       {/*Header*/}
+      <Header />
       <>
         <Router>
           <Sidebar />
