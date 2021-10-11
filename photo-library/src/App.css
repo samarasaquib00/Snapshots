@@ -8,3 +8,8 @@ body {
   padding: 0;
   align-items: center;
 }
+
+.app_body {
+  height: 100%;
+  display: flex;
+}

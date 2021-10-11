@@ -14,18 +14,21 @@ function App() {
     <div className="App">
       {/*Header*/}
       <Header />
+
+      <div className='app_body'>
       <>
         <Router>
           <Sidebar />
           <Switch>
-              <Route exact path='/' component={Home} />
-              <Route exact path='/photolibrary' component={Library} />
-              <Route exact path='/albums' component={Albums} />
-              <Route exact path='/upload' component={Upload} />
-              <Route component={NoMatch} />
+              <Route exact path='/' component={Home} className='displayed_page' />
+              <Route exact path='/photolibrary' component={Library} className='displayed_page' />
+              <Route exact path='/albums' component={Albums} className='displayed_page' />
+              <Route exact path='/upload' component={Upload} className='displayed_page' />
+              <Route component={NoMatch} className='displayed_page' />
           </Switch>
         </Router>
       </>
+      </div>
     </div>
   );
 }
