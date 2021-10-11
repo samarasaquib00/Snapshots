@@ -2,22 +2,25 @@ import './App.css';
 import Sidebar from './Components/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Pages/Home';
-import Album from './Pages/PhotoAlbum';
+import Albums from './Pages/PhotoAlbum';
 import Library from './Pages/PhotoLibrary';
 import Upload from './Pages/Upload';
+import NoMatch from './Pages/NoMatch';
 
 
 function App() {
   return (
     <div className="App">
+      {/*Header*/}
       <>
         <Router>
-          <Sidebar/>
+          <Sidebar />
           <Switch>
-              <Route path='/' exact component={Home} />
-              <Route path='/albums' component={Album} />
-              <Route path='/photolibrary' component={Library} />
-              <Route path='/upload' component={Upload} />
+              <Route exact path='/' component={Home} />
+              <Route exact path='/photolibrary' component={Library} />
+              <Route exact path='/albums' component={Albums} />
+              <Route exact path='/upload' component={Upload} />
+              <Route component={NoMatch} />
           </Switch>
         </Router>
       </>

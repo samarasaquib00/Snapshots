@@ -4,10 +4,11 @@
     background-color: darkslategrey;
   }
   
-  .SidebarList{
+  .SidebarList {
     height: auto;
     width: 100%;
     padding: 0;
+
   }
   
   .SidebarList .row {
@@ -15,11 +16,19 @@
     height: 55px;
     list-style-type: none;
     margin: 0%;
-    display: flex;
-    flex-direction: row;
-    color: white;
-    justify-content: center;
-    align-items: center;
+  }
+
+  .SidebarList .row a {
+      text-decoration: none;
+      color: white;
+      width: 95%;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0 16px;
+      border-radius: 4px;
+      justify-content: flex-start;
   }
   
   .SidebarList .row:hover {
@@ -30,13 +39,12 @@
   .SidebarList #active {
     background-color: #374048;
   }
-  
-  .row #icon {
-    flex: 30%;
-    display: grid;
-    place-items: center;
+
+  span {
+      margin-left: 16px;
   }
-  
-  .row #title {
-    flex: 80%;
+
+  .spacer {
+      height: 100%;
+      width: 200px;
   }
