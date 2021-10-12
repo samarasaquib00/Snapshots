@@ -8,7 +8,7 @@ function Header() {
         <div className='header'>
             <div className='header_left'>
                 {/* Logo */}
-                <img className='header_logo' src={Logo} alt="" height={50} width={325} />
+                <img className='header_logo' src={Logo} alt="" height={40} width={340} />
             </div>
             <div className='header_right'>
                 <PersonIcon />

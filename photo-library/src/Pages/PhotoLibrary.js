@@ -1,9 +1,11 @@
 import React from 'react'
+import './PhotoLibrary.css'
+import LibraryHeader from '../Components/LibraryHeader';
 
 function PhotoLibrary() {
     return (
         <div className= 'photolibrary'>
-            <h1>This is the Photo Library Page</h1>
+            <LibraryHeader />
         </div>
     )
 }

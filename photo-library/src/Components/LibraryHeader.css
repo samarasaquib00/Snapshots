@@ -1,18 +1,16 @@
-.header {
-    height: 50px;
+.library_header {
     display: flex;
-    background-color: lightgrey; 
     align-items: center;
     justify-content: space-between; 
 }
 
-.header_left {
+.library_header_left {
     display: flex;
     align-items: center;
     margin-left: 15px;
 }
 
-.header_right {
+.library_header_right {
     display: flex;
     align-items: center;
     margin-right: 15px;
