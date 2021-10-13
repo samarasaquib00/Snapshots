@@ -14,10 +14,10 @@ function PhotoLibrary() {
                 <LibraryHeader />
             </div>
             <div className= 'gallery'>
-                <img className='sample_photo1' src={Photo} alt="" height={200} width={300} />
-                <img className='sample_photo2' src={Photo2} alt="" height={200} width={300} />
-                <img className='sample_photo3' src={Photo3} alt="" height={200} width={300} />
-                <img className='sample_photo4' src={Photo4} alt="" height={200} width={300} />
+                <img className='sample_photo1' src={Photo} alt="" />
+                <img className='sample_photo2' src={Photo2} alt="" />
+                <img className='sample_photo3' src={Photo3} alt="" />
+                <img className='sample_photo4' src={Photo4} alt="" />
             </div>
             <div className= 'bottom_buttons'>
                 {/* put delete, share, and select buttons in this container and fix css */}
