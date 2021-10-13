@@ -12,25 +12,12 @@
 .gallery {
     margin-top: 20px;
     margin-left: 20px;
+    align-content: center;
 }
 
-.sample_photo {
-    margin-top: 5px;
-    margin-left: 5px;
-}
-
-.sample_photo2 {
-    margin-top: 5px;
-    margin-left: 5px;
-}
-
-
-.sample_photo3 {
-    margin-top: 5px;
-    margin-left: 5px;
-}
-
-.sample_photo4 {
+.gallery > img {
+    object-fit: contain;
+    height: 200px;
     margin-top: 5px;
     margin-left: 5px;
 }

@@ -9,7 +9,7 @@ function Header() {
         <div className='header'>
             <div className='header_left'>
                 {/* Logo */}
-                <img className='header_logo' src={Logo} alt="" height={40} width={340} />
+                <img className='header_logo' src={Logo} alt=""/>
             </div>
             <div className='header_right'>
                 <ul className= "HeaderIcon">

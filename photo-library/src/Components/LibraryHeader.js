@@ -1,4 +1,5 @@
 import React from 'react'
+import './LibraryHeader.css'
 
 function LibraryHeader() {
     return (
@@ -8,6 +9,7 @@ function LibraryHeader() {
             </div>
             <div className= 'library_header_right'>
                 {/* sort button goes here, css needs to be fixed */}
+                <h2>Sort Button</h2>
             </div>
         </div>
 
