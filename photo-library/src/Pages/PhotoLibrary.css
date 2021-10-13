@@ -8,3 +8,29 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.gallery {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.sample_photo {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.sample_photo2 {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+
+.sample_photo3 {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.sample_photo4 {
+    margin-top: 5px;
+    margin-left: 5px;
+}

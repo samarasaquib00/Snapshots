@@ -2,12 +2,23 @@ import React, { useState } from 'react'
 import { Images } from './PhotoData'
 
 const PhotoGallery = () => {
-    const [imageList, setImageList] = useState(Images);
-    return (
-        <div className= 'imageGrid'>
-            {imageList.map((item) => <img src={item.url}></img>) }
-        </div>
-    )
+    <>
+    {
+        Images.map((photo, index) => {
+            return (<div
+                key ={index}
+                style={{
+                    overflowY: "scroll",
+                    height: 5000,
+                    width: "100%",
+                    backgroundImage: `url(${photo})`,
+                    backgroundPosition: "center",
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat"}}>   
+            </div>)
+        })
+    }
+    </>
 }
 
 export default PhotoGallery
