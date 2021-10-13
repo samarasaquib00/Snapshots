@@ -3,13 +3,12 @@
   height: 100vh;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  align-items: center;
+.app_body {
+  height: 100%;
+  display: flex;
 }
 
-.app_body {
+.body {
   height: 100%;
   display: flex;
 }

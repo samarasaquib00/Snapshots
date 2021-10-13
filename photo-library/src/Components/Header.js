@@ -1,7 +1,8 @@
-import React, { Profiler } from 'react'
+import React from 'react'
 import './Header.css'
-import PersonIcon from '@mui/icons-material/Person';
+import { HeaderData } from './HeaderData';
 import Logo from '../Logo.png';
+import { Link } from 'react-router-dom';
 
 function Header() {
     return (
@@ -11,8 +12,21 @@ function Header() {
                 <img className='header_logo' src={Logo} alt="" height={40} width={340} />
             </div>
             <div className='header_right'>
-                <PersonIcon />
-                {/* Profile Icon */}
+                <ul className= "HeaderIcon">
+                    {HeaderData.map((val,index)=> {
+                        return (
+                        <li key={index} 
+                        className= "icon"
+                        id={window.location.pathname == val.link ? "active" : ""}
+                        onClick={()=> {window.location.pathname = val.link}}>
+                        <Link to ={val.link}>
+                                {val.icon}
+                        </Link>
+
+                        </li>
+                        )
+                    })}
+                </ul>
             </div>
         </div>
     )
