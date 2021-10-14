@@ -8,7 +8,7 @@ import Library from './Pages/PhotoLibrary';
 import Upload from './Pages/Upload';
 import NoMatch from './Pages/NoMatch';
 import Login from './Pages/Login';
-
+import Forgot from './Pages/ForgotPassword'
 
 function App() {
   return (
@@ -26,6 +26,7 @@ function App() {
               <Route exact path='/albums' component={Albums} className='displayed_page' />
               <Route exact path='/upload' component={Upload} className='displayed_page' />
               <Route exact path='/login' component={Login} className='displayed_page' />
+              <Route exact path='/forgot-password' component={Forgot} className='displayed_page' />
               <Route component={NoMatch} className='displayed_page' />
             </Switch>
           </div>
