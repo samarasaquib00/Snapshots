@@ -1,5 +1,10 @@
 import React from 'react'
 import './LibraryHeader.css'
+import Select from '../Components/Select';
+import Sort from '../Components/Sort';
+import Delete from '../Components/Delete';
+
+
 
 function LibraryHeader() {
     return (
@@ -9,7 +14,11 @@ function LibraryHeader() {
             </div>
             <div className= 'library_header_right'>
                 {/* sort button goes here, css needs to be fixed */}
-                <h2>Sort Button</h2>
+                <Select />
+                <Delete />
+                <Sort />
+
+
             </div>
         </div>
 
