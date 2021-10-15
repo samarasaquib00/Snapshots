@@ -14,9 +14,9 @@ function LibraryHeader() {
             </div>
             <div className= 'library_header_right'>
                 {/* sort button goes here, css needs to be fixed */}
+                <Sort />
                 <Select />
                 <Delete />
-                <Sort />
 
 
             </div>
