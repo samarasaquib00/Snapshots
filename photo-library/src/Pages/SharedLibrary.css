@@ -1,0 +1,23 @@
+.sharedlibrary {
+    padding: 0;
+    margin-left: 10px;
+}
+
+.shared_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.shared_gallery {
+    margin-top: 20px;
+    margin-left: 20px;
+    align-content: center;
+}
+
+.shared_gallery > img {
+    object-fit: contain;
+    height: 200px;
+    margin-top: 5px;
+    margin-left: 5px;
+}

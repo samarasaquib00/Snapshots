@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import './PhotoAlbum.css'
 import AlbumHeader from '../Components/AlbumHeader'
 import AlbumIcon from '../test-images/folder.png'
-import Photo from '../test-images/img1.jpg'
 
 function PhotoAlbum() {
 
@@ -34,7 +33,7 @@ function PhotoAlbum() {
                 <AlbumHeader />
             </div>
 
-            <div className= 'gallery'>     
+            <div className= 'album_gallery'>     
                 <div class='album_image'>
                     <img onClick={imageClick} className='sample_album1' src={AlbumIcon} alt="" />
                     <h3><span>Album 1</span></h3>

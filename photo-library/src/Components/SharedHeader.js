@@ -1,18 +1,18 @@
 import React from 'react'
-import './AlbumHeader.css'
+import './SharedHeader.css'
 import Select from '../Components/Select';
 import Sort from '../Components/Sort';
 import Delete from '../Components/Delete';
 
 
 
-function AlbumHeader() {
+function SharedHeader() {
     return (
-        <div className= 'album_header'>
-            <div className= 'album_header_left'>
-                <h1>Album Library</h1>
+        <div className= 'shared_header'>
+            <div className= 'shared_header_left'>
+                <h1>Shared Library</h1>
             </div>
-            <div className= 'album_header_right'>
+            <div className= 'shared_header_right'>
                 <Select />
                 <Delete />
                 <Sort />
@@ -22,4 +22,4 @@ function AlbumHeader() {
     )
 }
 
-export default AlbumHeader
+export default SharedHeader
