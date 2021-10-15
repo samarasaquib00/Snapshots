@@ -1,0 +1,39 @@
+.photoAlbum {
+    padding: 0;
+    margin-left: 10px;
+}
+
+.album_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.album_gallery {
+    margin-top: 20px;
+    margin-left: 20px;
+    align-content: center;
+}
+
+.album_gallery > img {
+    object-fit: contain;
+    height: 200px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.album_image { 
+    position: relative; 
+ }
+ 
+ h2 { 
+   position: absolute; 
+   top: 200px; 
+   left: 0;  
+ }
+ 
+ h2 span { 
+    color: white; 
+    background: rgb(0, 0, 0);
+    padding: 10px; 
+ }

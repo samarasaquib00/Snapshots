@@ -1,0 +1,18 @@
+.album_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+
+}
+
+.album_header_left {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.album_header_right {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
