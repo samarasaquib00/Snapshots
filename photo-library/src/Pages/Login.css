@@ -3,22 +3,19 @@
     width: 100vw;
     height: 100vh;
 }
+
 .blocks{
     display: flex;
     margin-top: 20px;
 }
 
 .sign_in {
-    align-content: center;
-    justify-content: center;
     padding: 0;
     max-width: 600px;
     margin-bottom: 20px;
 }
 
 .sign_up {
-    align-content: center;
-    justify-content: center;
     padding: 0;
     max-width: 600px;
     margin-left: 20px;
