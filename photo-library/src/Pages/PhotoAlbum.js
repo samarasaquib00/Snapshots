@@ -54,10 +54,6 @@ function PhotoAlbum() {
                     <h3><span>Album 4</span></h3>
                 </div>
             </div>
-
-            <div className= 'bottom_buttons'>
-                {/*adding select/delete buttons potentially*/}
-            </div>
         </div>
     )
 }
