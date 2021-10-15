@@ -9,7 +9,7 @@ function Select() {
         //get mouse click
         //console.log("Hello");
         //add photo to a data structure to store it
-        
+
     }
 
 
