@@ -1,5 +1,4 @@
 import SortButton from './Sort.css'
-import Dropdown from './Dropdown.js';
 import React, { useState } from 'react';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
