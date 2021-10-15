@@ -8,17 +8,18 @@ import Delete from '../Components/Delete';
 
 function AlbumHeader() {
     return (
-        <div className= 'album_header'>
-            <div className= 'album_header_left'>
-                <h1>Album Library</h1>
-            </div>
-            <div className= 'album_header_right'>
-                <Select />
-                <Delete />
-                <Sort />
+        <div className= 'album_page'>
+            <div className= 'album_header'>
+                <div className= 'album_header_left'>
+                    <h1>Album Library</h1>
+                </div>
+                <div className= 'album_header_right'>
+                    <Select />
+                    <Delete />
+                    <Sort />
+                </div>
             </div>
         </div>
-
     )
 }
 

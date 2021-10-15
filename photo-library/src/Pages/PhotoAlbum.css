@@ -1,3 +1,8 @@
+.page {
+    width: 100vw;
+    height: 100vh;
+}
+
 .photoAlbum {
     padding: 0;
     margin-left: 10px;
