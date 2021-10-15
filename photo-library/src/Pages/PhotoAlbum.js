@@ -30,29 +30,29 @@ function PhotoAlbum() {
 
     return (
         <div className= 'page'>
-            <div className= 'albums'>
+            <div className= 'photoAlbum'>
                 <AlbumHeader />
             </div>
 
             <div className= 'gallery'>     
                 <div class='album_image'>
                     <img onClick={imageClick} className='sample_album1' src={AlbumIcon} alt="" />
-                    <h2><span>Album 1</span></h2>
+                    <h3><span>Album 1</span></h3>
                 </div>               
 
                 <div class='album_image'>
                     <img onClick={imageClick} className='sample_album2' src={AlbumIcon} alt="" />
-                    <h2><span>Album 2</span></h2>
+                    <h3><span>Album 2</span></h3>
                 </div>
 
                 <div class='album_image'>
                     <img onClick={imageClick} className='sample_album3' src={AlbumIcon} alt="" />                    
-                    <h2><span>Album 3</span></h2>
+                    <h3><span>Album 3</span></h3>
                 </div>
 
                 <div class='album_image'>
                     <img onClick={imageClick} className='sample_album4' src={AlbumIcon} alt="" />
-                    <h2><span>Album 4</span></h2>
+                    <h3><span>Album 4</span></h3>
                 </div>
             </div>
 

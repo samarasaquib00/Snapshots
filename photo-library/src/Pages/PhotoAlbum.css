@@ -26,13 +26,13 @@
     position: relative; 
  }
  
- h2 { 
+ h3 { 
    position: absolute; 
    top: 200px; 
    left: 0;  
  }
  
- h2 span { 
+ h3 span { 
     color: white; 
     background: rgb(0, 0, 0);
     padding: 10px; 
