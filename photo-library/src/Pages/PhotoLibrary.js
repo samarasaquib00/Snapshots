@@ -24,6 +24,7 @@ import Photo16 from '../test-images/img16.jpg'
 function PhotoLibrary() {
 
 
+
     //onclick on images
     const [select, setSelect] = useState(false)
 
@@ -33,21 +34,32 @@ function PhotoLibrary() {
     const selection = () => { 
         //unselect or select
         setSelect(!select)
-        
+
     }
 
 
+    /* Detect photo mouse click */
     const imageClick = (e) => {
         
         console.log(e.target.attributes);
         //if (select == true) {
-            e.target.border = "3 px solid black";
             //setSelect(select.push(e.target))
         //}
+        /* Select */
+        if (e.target.border=="0 px solid black") {
+            e.target.border = "3 px solid black";
+            //setSelected(selected.push(e.target))
+        } else { /* Deselect */
+            e.target.border = "0 px solid black";
+            const name = e.target.getAttribute("name");
+            //setSelected(selected.filter(pic=>pic.name!=name));
+        }
+        console.log(selected);
         
       } 
       
       //delete function and delete method
+
 
 
     return (
