@@ -20,10 +20,14 @@ function PhotoAlbum() {
     const imageClick = (e) => {
         
         console.log(e.target.attributes);
-        //if (select == true) {
+        if (e.target.border=="0 px solid black") {
             e.target.border = "3 px solid black";
-            //setSelect(select.push(e.target))
-        //}
+            //setSelected(selected.push(e.target))
+        } else { /* Deselect */
+            e.target.border = "0 px solid black";
+            const name = e.target.getAttribute("name");
+            //setSelected(selected.filter(pic=>pic.name!=name));
+        }
         
     } 
 

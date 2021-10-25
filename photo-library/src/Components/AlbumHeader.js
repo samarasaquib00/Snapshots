@@ -14,9 +14,9 @@ function AlbumHeader() {
                     <h1>Album Library</h1>
                 </div>
                 <div className= 'album_header_right'>
+                    <Sort />
                     <Select />
                     <Delete />
-                    <Sort />
                 </div>
             </div>
         </div>
