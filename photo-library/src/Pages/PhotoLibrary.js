@@ -60,6 +60,8 @@ function PhotoLibrary() {
       
       //delete function and delete method
 
+      /* RIGHT CLICK DETECTION */
+      
 
 
     return (
