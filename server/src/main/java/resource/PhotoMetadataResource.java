@@ -10,7 +10,7 @@ import java.sql.*;
 
 public class PhotoMetadataResource extends ServerResource {
 
-    @Get
+    @Get ("json")
     public String represent() {
 
 // debug code to print out every query string
