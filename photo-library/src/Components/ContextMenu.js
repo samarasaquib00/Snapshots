@@ -1,3 +1,5 @@
+import { Component } from "react";
+import React from 'react'
 class ContextMenu extends Component {
     state = {
         xPos: "0px",
@@ -39,13 +41,19 @@ class ContextMenu extends Component {
               style={{
                 top: yPos,
                 left: xPos,
+                position: "absolute",
+                'list-style-type': "none",
+                background: "white"
               }}
             >
-              <li>Login</li>
-              <li>Register</li>
-              <li>Open Profile</li>
+              
+              <li>{this.props.first}</li>
+              <li>{this.props.second}</li>
             </ul>
           );
         else return null;
       }
+      
 }
+
+export default ContextMenu;
