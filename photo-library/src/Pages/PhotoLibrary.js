@@ -18,6 +18,7 @@ import Photo13 from '../test-images/img13.jpg'
 import Photo14 from '../test-images/img14.jpg'
 import Photo15 from '../test-images/img15.jpg'
 import Photo16 from '../test-images/img16.jpg'
+import ContextMenu from '../Components/ContextMenu'
 
 
 
