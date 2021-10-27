@@ -70,6 +70,7 @@ function PhotoLibrary() {
             <div className= 'photolibrary'>
                 <LibraryHeader />
             </div>
+                <ContextMenu first="Edit" second="Delete" third="View Photo Metadata"/>
             <div className= 'gallery'>
                 <img onClick={imageClick} className='sample_photo1' src={Photo} alt="" />
                 <img onClick={imageClick} className='sample_photo2' src={Photo2} alt="" />
