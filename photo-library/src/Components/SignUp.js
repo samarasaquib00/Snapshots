@@ -1,10 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './SignUp.css'
 import Icon from '../Icon.png';
 import Button from '@mui/material/Button';
+import Popup from '../Components/Popup';
 import { Link } from 'react-router-dom';
 
 function SignUp() {
+
+    const [isOpen, setIsOpen] = useState(false);
+ 
+    const togglePopup = () => {
+      setIsOpen(!isOpen);
+    }
+
     return (
         <div className= 'signup'>
             <div className= 'signup_block'>
@@ -23,7 +31,15 @@ function SignUp() {
                     <input placeholder= 'Confirm Password'/>
                 </div>
                 <div className= 'button'>
-                    <Button component= {Link} to='/photolibrary' variant="contained" size= 'large'>Sign Up</Button>
+                    <Button /*component= {Link} to='/photolibrary'*/ variant="contained" size= 'large' onClick={togglePopup}>Sign Up</Button>
+                    {isOpen && <Popup
+                    content={<>
+                        <b>Sign Up Error</b>
+                        <p>We were unable to sign you up for an account. Please try again.</p>
+                        <button onClick={togglePopup}>OK</button>
+                        </>}
+                        handleClose={togglePopup}
+                    />}
                 </div>
             </div>
         </div>
