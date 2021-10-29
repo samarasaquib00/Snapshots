@@ -7,29 +7,38 @@ class ContextMenu extends Component {
         show: false
     }
 
+
     componentDidMount() {
         document.addEventListener("click", this.handleClick);
         document.addEventListener("contextmenu", this.handleContextMenu);
     }
+  
+    
 
     componentWillUnmount() {
         document.removeEventListener("click", this.handleClick);
         document.removeEventListener("contextmenu", this.handleContextMenu);
     }
 
+    // for exiting the context menu
     handleClick = (e) => {
         if (this.state.showMenu) this.setState({ showMenu: false });
     }
 
+  
     handleContextMenu = (e) => {
         e.preventDefault();
+        console.log("Hello world", e)
       
-        this.setState({
-          xPos: `${e.pageX}px`,
-          yPos: `${e.pageY}px`,
-          showMenu: true,
-        });
-      };
+        // if statement to determine if photo is being clicked
+        if (e.target.localName === "img") {
+          this.setState({
+           xPos: `${e.pageX}px`,
+           yPos: `${e.pageY}px`,
+           showMenu: true,
+         })
+       }
+     }
 
       render() {
         const { showMenu, xPos, yPos } = this.state;
@@ -49,6 +58,8 @@ class ContextMenu extends Component {
               
               <li>{this.props.first}</li>
               <li>{this.props.second}</li>
+              <li>{this.props.third}</li>
+
             </ul>
           );
         else return null;
