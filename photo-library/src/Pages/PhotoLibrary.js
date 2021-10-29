@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Component, useState } from 'react'
 import './PhotoLibrary.css'
 import LibraryHeader from '../Components/LibraryHeader';
 import PhotoGallery from '../Components/PhotoGallery';
@@ -20,10 +20,12 @@ import Photo15 from '../test-images/img15.jpg'
 import Photo16 from '../test-images/img16.jpg'
 import ContextMenu from '../Components/ContextMenu'
 
+// Create Array of Images
+let imageArray = [Photo, Photo2, Photo3, Photo4, Photo6, Photo7, Photo8, Photo9, Photo10, 
+    Photo11, Photo12, Photo13, Photo14, Photo15, Photo16]
 
 
 function PhotoLibrary() {
-
 
 
     //onclick on images
@@ -41,7 +43,6 @@ function PhotoLibrary() {
 
     /* Detect photo mouse click */
     const imageClick = (e) => {
-        
         console.log(e.target.attributes);
         //if (select == true) {
             //setSelect(select.push(e.target))
@@ -56,13 +57,15 @@ function PhotoLibrary() {
             //setSelected(selected.filter(pic=>pic.name!=name));
         }
         console.log(selected);
-        
       } 
       
-      //delete function and delete method
 
-      /* RIGHT CLICK DETECTION */
-      
+      // Create Delete Function to be compatible with array
+      function deletePhoto() {
+          // if Delete option is clicked
+                // remove the photo from the array
+                    // use console to find something different in each image, such as the src
+      }
 
 
     return (
@@ -71,8 +74,16 @@ function PhotoLibrary() {
             <div className= 'photolibrary'>
                 <LibraryHeader />
             </div>
-                <ContextMenu first="Edit" second="Delete" third="View Photo Metadata"/>
+            <ContextMenu first="Edit" second="Delete" third="View Photo Metadata"/>
+
             <div className= 'gallery'>
+
+                {/* Display the photos in the array */}
+                {imageArray.map(image => <img onClick={imageClick} src={image} /> )
+                }
+
+
+                {/*                 
                 <img onClick={imageClick} className='sample_photo1' src={Photo} alt="" />
                 <img onClick={imageClick} className='sample_photo2' src={Photo2} alt="" />
                 <img onClick={imageClick} className='sample_photo3' src={Photo3} alt="" />
@@ -88,7 +99,7 @@ function PhotoLibrary() {
                 <img onClick={imageClick} className='sample_photo13' src={Photo13} alt="" />
                 <img onClick={imageClick} className='sample_photo14' src={Photo14} alt="" />
                 <img onClick={imageClick} className='sample_photo15' src={Photo15} alt="" />
-                <img onClick={imageClick} className='sample_photo16' src={Photo16} alt="" />
+                <img onClick={imageClick} className='sample_photo16' src={Photo16} alt="" /> */}
                 
 
 
