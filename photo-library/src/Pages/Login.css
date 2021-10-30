@@ -11,12 +11,6 @@
 
 .sign_in {
     padding: 0;
-    max-width: 500px;
+    max-width: 600px;
     margin-bottom: 20px;
-}
-
-.sign_up {
-    padding: 0;
-    max-width: 500px;
-    margin-left: 20px;
 }
