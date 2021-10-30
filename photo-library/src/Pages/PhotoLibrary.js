@@ -21,7 +21,7 @@ import Photo16 from '../test-images/img16.jpg'
 import ContextMenu from '../Components/ContextMenu'
 
 // Create Array of Images
-let imageArray = [Photo, Photo2, Photo3, Photo4, Photo6, Photo7, Photo8, Photo9, Photo10, 
+let imageArray = [Photo, Photo2, Photo3, Photo4, Photo5, Photo6, Photo7, Photo8, Photo9, Photo10, 
     Photo11, Photo12, Photo13, Photo14, Photo15, Photo16]
 
 
