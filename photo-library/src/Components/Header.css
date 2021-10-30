@@ -55,3 +55,8 @@
   .HeaderIcon #active {
     background-color: #696969;
   }
+
+  .dropdown_menu_right {
+    right: 0;
+    left: auto;
+  }

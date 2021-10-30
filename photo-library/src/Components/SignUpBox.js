@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
-import './SignUp.css'
+import './SignUpBox.css'
 import Icon from '../Icon.png';
 import Button from '@mui/material/Button';
-import Popup from '../Components/Popup';
+import Popup from './Popup';
 import { Link } from 'react-router-dom';
 
-function SignUp() {
+function SignUpBox() {
 
     const [isOpen, setIsOpen] = useState(false);
  
@@ -46,4 +46,4 @@ function SignUp() {
     )
 }
 
-export default SignUp
+export default SignUpBox

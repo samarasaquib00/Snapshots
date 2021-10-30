@@ -8,7 +8,9 @@ import Library from './Pages/PhotoLibrary';
 import Upload from './Pages/Upload';
 import NoMatch from './Pages/NoMatch';
 import Login from './Pages/Login';
-import Forgot from './Pages/ForgotPassword'
+import Forgot from './Pages/ForgotPassword';
+import Signup from './Pages/SignUp';
+import Settings from './Pages/Settings';
 import Shared from './Pages/SharedLibrary';
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
               <Route exact path='/shared' component={Shared} className='displayed_page' />
               <Route exact path='/upload' component={Upload} className='displayed_page' />
               <Route exact path='/login' component={Login} className='displayed_page' />
+              <Route exact path='/signup' component={Signup} className='displayed_page' />
+              <Route exact path='/settings' component={Settings} className='displayed_page' />
               <Route exact path='/forgot-password' component={Forgot} className='displayed_page' />
               <Route component={NoMatch} className='displayed_page' />
             </Switch>
