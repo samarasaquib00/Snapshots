@@ -69,10 +69,6 @@ class ContextMenu extends Component {
               
               <li>{this.props.first}</li>
               <li>{this.props.second}</li>
-<<<<<<< HEAD
-              <li>{this.props.third}</li>
-              <li>{this.props.fourth}</li>
-=======
               <li /*onClick={togglePopup}*/>{this.props.third}</li>
               {/*{isOpen && <Popup
                     content={<>
@@ -83,8 +79,7 @@ class ContextMenu extends Component {
                     handleClose={togglePopup}
                 />}
               */}
->>>>>>> Settings-Page
-
+              <li>{this.props.fourth}</li>
             </ul>
           );
         else return null;
