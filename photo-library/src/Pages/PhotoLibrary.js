@@ -74,7 +74,7 @@ function PhotoLibrary() {
             <div className= 'photolibrary'>
                 <LibraryHeader />
             </div>
-            <ContextMenu first="Edit" second="Delete" third="View Photo Metadata"/>
+            <ContextMenu first="Edit" second="Delete" third="View Photo Metadata" fourth="Make Public"/>
 
             <div className= 'gallery'>
 

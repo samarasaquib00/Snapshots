@@ -17,29 +17,39 @@ import Photo13 from '../test-images/img13.jpg'
 import Photo14 from '../test-images/img14.jpg'
 import Photo15 from '../test-images/img15.jpg'
 import Photo16 from '../test-images/img16.jpg'
+import ContextMenu from '../Components/ContextMenu'
 
 function SharedLibrary() {
      //onclick on images
-     const [select, setSelect] = useState(false)
+    const [select, setSelect] = useState(false)
 
-     //append to this list
-     const [selected, setSelected] = useState([])
- 
-     const selection = () => { 
-         //unselect or select
-         setSelect(!select)
-         
-     }
- 
-     const imageClick = (e) => {
-         
-         console.log(e.target.attributes);
-         //if (select == true) {
-             e.target.border = "3 px solid black";
-             //setSelect(select.push(e.target))
-         //}
-         
-       } 
+    //append to this list
+    const [selected, setSelected] = useState([])
+
+    const selection = () => { 
+        //unselect or select
+        setSelect(!select)
+
+    }
+
+
+    /* Detect photo mouse click */
+    const imageClick = (e) => {
+        console.log(e.target.attributes);
+        //if (select == true) {
+            //setSelect(select.push(e.target))
+        //}
+        /* Select */
+        if (e.target.border=="0 px solid black") {
+            e.target.border = "3 px solid black";
+            //setSelected(selected.push(e.target))
+        } else { /* Deselect */
+            e.target.border = "0 px solid black";
+            const name = e.target.getAttribute("name");
+            //setSelected(selected.filter(pic=>pic.name!=name));
+        }
+        console.log(selected);
+      } 
        
        //delete function and delete method
  
@@ -50,6 +60,8 @@ function SharedLibrary() {
              <div className= 'sharedlibrary'>
                  <SharedHeader />
              </div>
+             <ContextMenu first="Edit" second="Delete" third="View Photo Metadata" fourth="Make Private"/>
+
              <div className= 'shared_gallery'>
                  <img onClick={imageClick} className='sample_photo1' src={Photo} alt="" />
                  <img onClick={imageClick} className='sample_photo2' src={Photo2} alt="" />
