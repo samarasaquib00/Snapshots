@@ -1,5 +1,7 @@
 import { Component } from "react";
 import React from 'react'
+import Popup from './Popup'
+
 class ContextMenu extends Component {
     state = {
         xPos: "0px",
@@ -7,6 +9,11 @@ class ContextMenu extends Component {
         show: false
     }
 
+    /*popupstate = {
+      xPos: "0px",
+      yPos: "0px",
+      show: false
+    }*/
 
     componentDidMount() {
         document.addEventListener("click", this.handleClick);
@@ -25,6 +32,9 @@ class ContextMenu extends Component {
         if (this.state.showMenu) this.setState({ showMenu: false });
     }
 
+    /*togglePopup = (e) => {
+      if (this.popupstate.showPopup) this.setState({ showPopup: false });
+    }*/
   
     handleContextMenu = (e) => {
         e.preventDefault();
@@ -42,6 +52,7 @@ class ContextMenu extends Component {
 
       render() {
         const { showMenu, xPos, yPos } = this.state;
+        /*const { showPopup, xPos2, yPos2 } = this.popupstate;*/
     
         if (showMenu)
           return (
@@ -58,8 +69,21 @@ class ContextMenu extends Component {
               
               <li>{this.props.first}</li>
               <li>{this.props.second}</li>
+<<<<<<< HEAD
               <li>{this.props.third}</li>
               <li>{this.props.fourth}</li>
+=======
+              <li /*onClick={togglePopup}*/>{this.props.third}</li>
+              {/*{isOpen && <Popup
+                    content={<>
+                        <b>View Metadata</b>
+                        <p>We were unable to view the metadata for the chosen photo</p>
+                        <button onClick={togglePopup}>OK</button>
+                    </>}
+                    handleClose={togglePopup}
+                />}
+              */}
+>>>>>>> Settings-Page
 
             </ul>
           );
