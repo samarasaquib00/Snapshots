@@ -1,0 +1,91 @@
+.page {
+    margin-left: 10px;
+}
+
+.password_option {
+    display: flex;
+    flex: row;
+}
+
+.password_option > p {
+    margin-right: 30px;
+}
+
+.new_password {
+    background-color: #eaeaea;
+    display: flex;
+    padding: 0 50px;
+    color: gray;
+    border: 1p gray solid;
+    border-radius: 6px;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+.new_password > input {
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    font-size: 20px;
+}
+
+.confirm_new_password {
+    background-color: #eaeaea;
+    display: flex;
+    padding: 0 50px;
+    color: gray;
+    border: 1p gray solid;
+    border-radius: 6px;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 15px;
+}
+
+.confirm_new_password > input {
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    font-size: 20px;
+}
+
+.new_email {
+    background-color: #eaeaea;
+    display: flex;
+    padding: 0 50px;
+    color: gray;
+    border: 1p gray solid;
+    border-radius: 6px;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 15px;
+}
+
+.new_email > input {
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    font-size: 20px;
+}
+.new_username {
+    background-color: #eaeaea;
+    display: flex;
+    padding: 0 50px;
+    color: gray;
+    border: 1p gray solid;
+    border-radius: 6px;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 15px;
+}
+
+.new_username > input {
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    font-size: 20px;
+}
+
+.update_account_button {
+    margin-bottom: 50px;
+}
