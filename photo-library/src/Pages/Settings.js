@@ -55,7 +55,7 @@ function Settings() {
                         {isOpen && <Popup
                         content={<>
                         <b>Update Error</b>
-                        <p>We were unable to change your password.</p>
+                        <p>We were unable to change your account information.</p>
                         <button onClick={togglePopup}>OK</button>
                         </>}
                         handleClose={togglePopup}
