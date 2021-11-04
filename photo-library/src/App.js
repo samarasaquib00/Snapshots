@@ -18,6 +18,7 @@ const instance = axios.create({
   headers: {"Content-Type": "image/jpeg"},
 });
 
+axios.get()
 async function postPhoto() {
   const photo = x; //file for upload
   try {
@@ -45,7 +46,7 @@ async function getPhoto(){
 
 async function getPhotoMetaData(){
   try{
-    const res = await instance.get("/photometadata/2") //EDIT 2 is hardcoded
+    const res = await instance.get("127.0.0.1/api/photometadata/2") //EDIT 2 is hardcoded
 
     console.log(JSON.stringify(res));
   } catch (err){
