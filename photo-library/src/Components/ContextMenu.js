@@ -6,6 +6,7 @@ class ContextMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      elementID: null,
       xPos: "0px",
       yPos: "0px",
       show: false,
@@ -54,6 +55,7 @@ class ContextMenu extends Component {
         // if statement to determine if photo is being clicked
         if (e.target.localName === "img") {
           this.setState({
+           elementID: e.target.getAttribute("id"),
            xPos: `${e.pageX}px`,
            yPos: `${e.pageY}px`,
            showMenu: true,
@@ -62,21 +64,13 @@ class ContextMenu extends Component {
      }
 
     // Create Delete Function to be compatible with array
-    deletePhoto() {
-      // get the index of the image we are right clicking on
+    deletePhoto(e) {
 
-           // remove the photo from the array
-
-
-
-                  /*for (let i = 0; i < imageArray.length; i++) {
-                      if (e.target.attributes.src == imageArray[i].attributes.src) {
-                          //imageArray[i] = null;
-
-                      }
-                  }*/
-                  console.log(this.props.imageArray)
-                      // use console to find something different in each image, such as the src
+        //console.log(e.target.getAttribute("id"))
+        //const i = e.target.getAttribute("id");
+        console.log('elementId: ', this.state.elementID);
+        this.props.handleDeleteImage(this.state.elementID)
+        console.log(this.state.elementID)
         }
   
 
@@ -92,7 +86,7 @@ class ContextMenu extends Component {
                 top: yPos,
                 left: xPos,
                 position: "absolute",
-                'list-style-type': "none",
+                listStyleType: "none",
                 background: "white"
               }}
             >

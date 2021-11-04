@@ -21,11 +21,81 @@ import Photo16 from '../test-images/img16.jpg'
 import ContextMenu from '../Components/ContextMenu'
 
 // Create Array of Images
-let imageArray = [Photo, Photo2, Photo3, Photo4, Photo6, Photo7, Photo8, Photo9, Photo10, 
-    Photo11, Photo12, Photo13, Photo14, Photo15, Photo16]
+//let imageArray = [Photo, Photo2, Photo3, Photo4, Photo6, Photo7, Photo8, Photo9, Photo10, 
+  //  Photo11, Photo12, Photo13, Photo14, Photo15, Photo16]
 
 
 function PhotoLibrary() {
+
+    //make imagearray into state
+    const [imageArray, setImageArray] = useState([
+        {
+            
+            id: 0,
+            image: Photo
+        },
+        {
+            id: 1,
+            image: Photo2
+        },
+        {
+            id: 2,
+            image: Photo3
+        },
+        {
+            id: 3,
+            image: Photo4
+        },
+        {
+            id: 4,
+            image: Photo5
+        },
+        {
+            id: 5,
+            image: Photo6
+        },
+        {
+            id: 6,
+            image: Photo7
+        },
+        {
+            id: 7,
+            image: Photo8
+        },
+        {
+            id: 8,
+            image: Photo9
+        },
+        {
+            id: 9,
+            image: Photo10
+        },
+        {
+            id: 10,
+            image: Photo11
+        },
+        {
+            id: 11,
+            image: Photo12
+        },
+        {
+            id: 12,
+            image: Photo13
+        },
+        {
+            id: 13,
+            image: Photo14
+        },
+        {
+            id: 14,
+            image: Photo15
+        },
+        {
+            id: 15,
+            image: Photo16
+        }
+    ])
+
 
 
     //onclick on images
@@ -33,6 +103,7 @@ function PhotoLibrary() {
 
     //append to this list
     const [selected, setSelected] = useState([])
+
 
     const selection = () => { 
         //unselect or select
@@ -59,8 +130,21 @@ function PhotoLibrary() {
         console.log(selected);
       } 
       
+    const handleDeleteImage = (i) => {
+        //console.log(e.target.getAttribute("id"))
+        //const i = e.target.getAttribute("id");
+        const copyArray = JSON.parse(JSON.stringify(imageArray));
+        console.log("i: ", i);
+        console.log('filterdArray: ', copyArray.filter(image => {
+            console.log('current I: ', i);
+            console.log("image id: ", image.id);
+            return String(image.id) !== i
+        }))
+        setImageArray(imageArray => imageArray.filter((imageFile,idx) => String(idx) !== i) );
+        
+    }
 
-
+    console.log('image array: ', imageArray);
 
     return (
 
@@ -68,11 +152,11 @@ function PhotoLibrary() {
             <div className= 'photolibrary'>
                 <LibraryHeader />
             </div>
-            <ContextMenu imageArray={imageArray} first="Edit" second="Delete" third="View Photo Metadata" fourth="Make Public"/>
+            <ContextMenu handleDeleteImage={handleDeleteImage} imageArray={imageArray} first="Edit" second="Delete" third="View Photo Metadata" fourth="Make Public"/>
             <div className= 'gallery'>
 
                 {/* Display the photos in the array */}
-                {imageArray.map((image, index) => <img onClick={imageClick} src={image} id={index} /> )
+                {imageArray.map((imageElement, index) => <img onClick={imageClick} src={imageElement.image} id={index} key={index}/> )
                 }
 
 
