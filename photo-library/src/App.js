@@ -13,6 +13,46 @@ import Signup from './Pages/SignUp';
 import Settings from './Pages/Settings';
 import Shared from './Pages/SharedLibrary';
 
+const instance = axios.create({
+  baseURL: '127.0.0.1/api/',
+  headers: {"Content-Type": "image/jpeg"},
+});
+
+async function postPhoto() {
+  const photo = x; //file for upload
+  try {
+    const res = await instance.post("/photoupload?uid=1", { //POST request where uid= current user  EDIT uid=1 is hardcoded
+      headers: {
+        'Content-Type': photo
+      }
+    });
+
+    console.log(JSON.stringify(res));//print success
+  } catch (err) {
+    console.log(JSON.stringify(err)); //print error
+  }
+}
+
+async function getPhoto(){
+  try{
+    const res = await instance.get("/photo/2") //EDIT 2 is hardcoded
+
+    console.log(JSON.stringify(res));
+  } catch (err){
+    console.log(JSON.stringify(err));
+  }
+}
+
+async function getPhotoMetaData(){
+  try{
+    const res = await instance.get("/photometadata/2") //EDIT 2 is hardcoded
+
+    console.log(JSON.stringify(res));
+  } catch (err){
+    console.log(JSON.stringify(err));
+  }
+}
+
 function App() {
   return (
     <div className="App">
