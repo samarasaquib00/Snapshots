@@ -1,9 +1,7 @@
 import org.restlet.Application;
 import org.restlet.Restlet;
 import org.restlet.routing.Router;
-import resource.PhotoMetadataResource;
-import resource.PhotoResource;
-import resource.PhotoUploadResource;
+import resource.*;
 
 public class PhotoManagementAPIApplication extends Application {
 
@@ -19,6 +17,9 @@ public class PhotoManagementAPIApplication extends Application {
         router.attach("/photo/{id}", PhotoResource.class);
         router.attach("/photometadata/{id}", PhotoMetadataResource.class);
         router.attach("/photoupload", PhotoUploadResource.class);
+        router.attach("/photometadatalist/", PhotoMetadataListResource.class);
+        router.attach("/photodelete/{id}", PhotoDeleteResource.class);
+        router.attach("/photoexiflist/{id}", PhotoEXIFListResource.class);
 
         return router;
     }
