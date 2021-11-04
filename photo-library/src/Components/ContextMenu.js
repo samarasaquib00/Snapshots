@@ -1,23 +1,37 @@
 import { Component } from "react";
 import React from 'react'
-import Popup from './Popup'
-
+import PhotoLibrary from "../Pages/PhotoLibrary";
 class ContextMenu extends Component {
-    state = {
-        xPos: "0px",
-        yPos: "0px",
-        show: false
-    }
 
-    /*popupstate = {
+  constructor(props) {
+    super(props);
+    this.state = {
       xPos: "0px",
       yPos: "0px",
-      show: false
-    }*/
+      show: false,
+      images: this.props.imageArray
+    }
+    this.handleClick = this.handleClick.bind(this);
+    this.deletePhoto = this.deletePhoto.bind(this);
+    }
+  
+
+  
+   /* state = {
+      xPos: "0px",
+      yPos: "0px",
+      show: false,
+      images: this.props.imageArray
+    }
+*/
 
     componentDidMount() {
         document.addEventListener("click", this.handleClick);
         document.addEventListener("contextmenu", this.handleContextMenu);
+        //document.addEventListener("click", this.deletePhoto);
+
+        //console.log(this.props)
+
     }
   
     
@@ -32,9 +46,6 @@ class ContextMenu extends Component {
         if (this.state.showMenu) this.setState({ showMenu: false });
     }
 
-    /*togglePopup = (e) => {
-      if (this.popupstate.showPopup) this.setState({ showPopup: false });
-    }*/
   
     handleContextMenu = (e) => {
         e.preventDefault();
@@ -50,13 +61,32 @@ class ContextMenu extends Component {
        }
      }
 
+    // Create Delete Function to be compatible with array
+    deletePhoto() {
+      // get the index of the image we are right clicking on
+
+           // remove the photo from the array
+
+
+
+                  /*for (let i = 0; i < imageArray.length; i++) {
+                      if (e.target.attributes.src == imageArray[i].attributes.src) {
+                          //imageArray[i] = null;
+
+                      }
+                  }*/
+                  console.log(this.props.imageArray)
+                      // use console to find something different in each image, such as the src
+        }
+  
+
       render() {
         const { showMenu, xPos, yPos } = this.state;
-        /*const { showPopup, xPos2, yPos2 } = this.popupstate;*/
     
         if (showMenu)
           return (
             <ul
+
               className="menu"
               style={{
                 top: yPos,
@@ -66,20 +96,12 @@ class ContextMenu extends Component {
                 background: "white"
               }}
             >
-              
               <li>{this.props.first}</li>
-              <li>{this.props.second}</li>
-              <li /*onClick={togglePopup}*/>{this.props.third}</li>
-              {/*{isOpen && <Popup
-                    content={<>
-                        <b>View Metadata</b>
-                        <p>We were unable to view the metadata for the chosen photo</p>
-                        <button onClick={togglePopup}>OK</button>
-                    </>}
-                    handleClose={togglePopup}
-                />}
-              */}
-              <li>{this.props.fourth}</li>
+              <li onClick={this.deletePhoto}>{this.props.second}</li>
+              <li>{this.props.third}</li>
+
+
+
             </ul>
           );
         else return null;
