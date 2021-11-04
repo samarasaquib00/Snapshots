@@ -23,6 +23,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -103,9 +104,15 @@ public class PhotoUploadResource extends ServerResource {
             boolean storeResult = false;
             try {
                 storeResult = photo.store();
+            } catch (SQLIntegrityConstraintViolationException e) {
+                if (e.getErrorCode() == 1062) {
+                    System.out.println("Photo has a duplicate hash");
+                    return new JsonRepresentation("{\"error_no\":9," +
+                            "\"error\":\"duplicate: an identical photo is already in the database\"}");
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
-                System.out.println("Probably a duplicate");
+                System.out.println("SQL error");
             } catch (InsufficientArgumentsException e) {
                 e.printStackTrace();
                 System.out.println("Slap some more arguments on");
@@ -123,15 +130,13 @@ public class PhotoUploadResource extends ServerResource {
                 return new JsonRepresentation("{\"error_no\":0,\"status\":\"success\"}");
             }
 
-
-
         } else {
             System.out.println("content type is not a photo");
             return new JsonRepresentation("{\"error_no\":6,\"error\":\"content is not an image\"}");
         }
 
 
-        //should return response json
+        //this returns if the store was unsuccessful for some reason but no json was explicitly returned
         return new JsonRepresentation("{\"error_no\":7,\"error\":\"generic failure\"}");
     }
 
