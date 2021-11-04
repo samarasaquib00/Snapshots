@@ -21,7 +21,7 @@ import Photo16 from '../test-images/img16.jpg'
 import ContextMenu from '../Components/ContextMenu'
 
 // Create Array of Images
-let imageArray = [Photo, Photo2, Photo3, Photo4, Photo5, Photo6, Photo7, Photo8, Photo9, Photo10, 
+let imageArray = [Photo, Photo2, Photo3, Photo4, Photo6, Photo7, Photo8, Photo9, Photo10, 
     Photo11, Photo12, Photo13, Photo14, Photo15, Photo16]
 
 
@@ -60,12 +60,6 @@ function PhotoLibrary() {
       } 
       
 
-      // Create Delete Function to be compatible with array
-      function deletePhoto() {
-          // if Delete option is clicked
-                // remove the photo from the array
-                    // use console to find something different in each image, such as the src
-      }
 
 
     return (
@@ -74,12 +68,11 @@ function PhotoLibrary() {
             <div className= 'photolibrary'>
                 <LibraryHeader />
             </div>
-            <ContextMenu first="Edit" second="Delete" third="View Photo Metadata" fourth="Make Public"/>
-
+            <ContextMenu imageArray={imageArray} first="Edit" second="Delete" third="View Photo Metadata" fourth="Make Public"/>
             <div className= 'gallery'>
 
                 {/* Display the photos in the array */}
-                {imageArray.map(image => <img onClick={imageClick} src={image} /> )
+                {imageArray.map((image, index) => <img onClick={imageClick} src={image} id={index} /> )
                 }
 
 
