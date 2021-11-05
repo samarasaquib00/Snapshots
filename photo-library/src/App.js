@@ -38,6 +38,7 @@ function App() {
               <Route exact path='/forgot-password' component={Forgot} className='displayed_page' />
               <Route exact path='/metadata' component={Metadata} className='displayed_page' />
               <Route exact path='/edit' component={Edit} className='displayed_page' />
+              <Route exact path='/photolibrary' page={PhotoLibrary} className='displayed_page' />
               <Route component={NoMatch} className='displayed_page' />
             </Switch>
           </div>
