@@ -13,12 +13,12 @@ import Signup from './Pages/SignUp';
 import Settings from './Pages/Settings';
 import Shared from './Pages/SharedLibrary';
 
+/*
 const instance = axios.create({
   baseURL: '127.0.0.1/api/',
   headers: {"Content-Type": "image/jpeg"},
 });
 
-axios.get()
 async function postPhoto() {
   const photo = x; //file for upload
   try {
@@ -52,7 +52,7 @@ async function getPhotoMetaData(){
   } catch (err){
     console.log(JSON.stringify(err));
   }
-}
+}*/
 
 function App() {
   return (

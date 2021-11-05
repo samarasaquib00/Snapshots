@@ -19,11 +19,14 @@ import Photo14 from '../test-images/img14.jpg'
 import Photo15 from '../test-images/img15.jpg'
 import Photo16 from '../test-images/img16.jpg'
 import ContextMenu from '../Components/ContextMenu'
+import ServerPhoto from '../Components/ServerPhoto'
+import ReactDOM from 'react-dom'
 
 // Create Array of Images
 //let imageArray = [Photo, Photo2, Photo3, Photo4, Photo6, Photo7, Photo8, Photo9, Photo10, 
   //  Photo11, Photo12, Photo13, Photo14, Photo15, Photo16]
 
+const axios = require('axios');
 
 function PhotoLibrary() {
 
@@ -146,6 +149,31 @@ function PhotoLibrary() {
 
     console.log('image array: ', imageArray);
 
+    async function getMetaDataList(){
+        let res = await axios.get('http://127.0.0.1:8183/api/photometadatalist/')
+        let data = res.data;
+        let photoIdArray = [];
+        for(const element of data.result){
+            photoIdArray.push('http://127.0.0.1:8183/api/photo/'+element.photo_id);
+            console.log(element.photo_id);
+        }
+        //console.log(data);
+        return photoIdArray;
+    }
+    //const serverPhotosArray = getMetaDataList();
+    
+   
+   
+    /*let photoMetaData
+   axios.get('http://127.0.0.1:8183/api/photometadatalist').then(res => {console.log(res.data)})
+   photoMetaData = res
+   const data = photoMetaData.data
+   let photoArray = [];
+   for(const element of data.result){
+       axios.get('http://127.0.0.1:8183/api/photo/'+element.photo_id).then(resp => {photoArray.push(resp)});
+   }*/
+
+
     return (
 
         <div className= 'page'>
@@ -154,8 +182,10 @@ function PhotoLibrary() {
             </div>
             <ContextMenu handleDeleteImage={handleDeleteImage} imageArray={imageArray} first="Edit" second="Delete" third="View Photo Metadata" fourth="Make Public"/>
             <div className= 'gallery'>
-
                 {/* Display the photos in the array */}
+                {/*getMetaDataList().then(x => {ReactDOM.render(<h1>hello</h1>,document.getElementsByClassName('gallery'))})*/}
+                {<ServerPhoto />}
+                {/*<img onClick={imageClick} src={'http://127.0.0.1:8183/api/photo/4'} />*/}
                 {imageArray.map((imageElement, index) => <img onClick={imageClick} src={imageElement.image} id={index} key={index}/> )
                 }
 

@@ -25,7 +25,7 @@ function Upload() {
             <FileUpload accept= ".jpg,.png,.jpeg" label="Upload Image(s)" 
             multiple updateFilesCb={updateUploadedFiles}/>
             <div className= 'upload_button'>
-                <Button /*component={Link} to='/photolibrary'*/ variant="contained" size="medium" onClick={togglePopup}>
+                <Button /*component={Link} to='/photolibrary'*/ variant="contained" size="medium" onClick={togglePopup}> {/*POST upload route here using 'files'*/}
                  Upload
                 </Button>
                 {isOpen && <Popup
