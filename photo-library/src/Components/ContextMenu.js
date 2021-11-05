@@ -1,6 +1,8 @@
-import { Component } from "react";
+import { Component, useState } from "react";
 import React from 'react'
 import PhotoLibrary from "../Pages/PhotoLibrary";
+import { Link } from 'react-router-dom';
+
 class ContextMenu extends Component {
 
   constructor(props) {
@@ -12,6 +14,7 @@ class ContextMenu extends Component {
       show: false,
       images: this.props.imageArray
     }
+    this.popUpState = false;
     this.handleClick = this.handleClick.bind(this);
     this.deletePhoto = this.deletePhoto.bind(this);
     }
@@ -72,8 +75,11 @@ class ContextMenu extends Component {
         this.props.handleDeleteImage(this.state.elementID)
         console.log(this.state.elementID)
         }
-  
-
+ 
+    /*togglePopup = () => {
+      this.popUpState = !this.popUpState;
+    }*/
+    
       render() {
         const { showMenu, xPos, yPos } = this.state;
     
@@ -92,7 +98,7 @@ class ContextMenu extends Component {
             >
               <li>{this.props.first}</li>
               <li onClick={this.deletePhoto}>{this.props.second}</li>
-              <li>{this.props.third}</li>
+              <Link to ='/metadata'><li>{this.props.third}</li></Link>
               <li>{this.props.fourth}</li>
 
 

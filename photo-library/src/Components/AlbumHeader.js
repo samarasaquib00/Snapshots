@@ -1,9 +1,8 @@
 import React from 'react'
 import './AlbumHeader.css'
-import Select from '../Components/Select';
 import Sort from '../Components/Sort';
 import Delete from '../Components/Delete';
-
+import Add from './NewAlbum';
 
 
 function AlbumHeader() {
@@ -14,8 +13,8 @@ function AlbumHeader() {
                     <h1>Album Library</h1>
                 </div>
                 <div className= 'album_header_right'>
+                    <Add />
                     <Sort />
-                    <Select />
                     <Delete />
                 </div>
             </div>
