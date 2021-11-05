@@ -12,6 +12,7 @@ import Forgot from './Pages/ForgotPassword';
 import Signup from './Pages/SignUp';
 import Settings from './Pages/Settings';
 import Shared from './Pages/SharedLibrary';
+import Metadata from './Pages/Metadata';
 
 /*
 const instance = axios.create({
@@ -74,6 +75,7 @@ function App() {
               <Route exact path='/signup' component={Signup} className='displayed_page' />
               <Route exact path='/settings' component={Settings} className='displayed_page' />
               <Route exact path='/forgot-password' component={Forgot} className='displayed_page' />
+              <Route exact path='/metadata' component={Metadata} className='displayed_page' />
               <Route component={NoMatch} className='displayed_page' />
             </Switch>
           </div>
