@@ -14,6 +14,8 @@ import Settings from './Pages/Settings';
 import Shared from './Pages/SharedLibrary';
 import Metadata from './Pages/Metadata';
 import Edit from './Pages/Edit';
+import PhotoLibrary from './Pages/PhotoLibrary';
+
 
 
 function App() {
