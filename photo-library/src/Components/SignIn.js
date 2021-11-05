@@ -34,7 +34,7 @@ function SignIn() {
                 <div className= 'button'>
                     <Button /*component= {Link} to='/photolibrary'*/ variant="contained" size= 'large' onClick={togglePopup}>Sign In</Button>
                     {isOpen && <Popup
-                    content={<>
+                        content={<>
                         <b>Sign In Error</b>
                         <p>We were unable to log you into your account. Please try again.</p>
                         <button onClick={togglePopup}>OK</button>
