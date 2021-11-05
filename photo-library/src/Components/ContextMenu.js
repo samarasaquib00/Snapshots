@@ -96,7 +96,8 @@ class ContextMenu extends Component {
                 background: "white"
               }}
             >
-              <li>{this.props.first}</li>
+              {/*<li>{this.props.first}</li>*/}
+              <Link to ='/edit'><li>{this.props.first}</li></Link>
               <li onClick={this.deletePhoto}>{this.props.second}</li>
               <Link to ='/metadata'><li>{this.props.third}</li></Link>
               <li>{this.props.fourth}</li>

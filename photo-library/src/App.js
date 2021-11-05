@@ -13,6 +13,8 @@ import Signup from './Pages/SignUp';
 import Settings from './Pages/Settings';
 import Shared from './Pages/SharedLibrary';
 import Metadata from './Pages/Metadata';
+import Edit from './Pages/Edit';
+
 
 function App() {
   return (
@@ -35,6 +37,7 @@ function App() {
               <Route exact path='/settings' component={Settings} className='displayed_page' />
               <Route exact path='/forgot-password' component={Forgot} className='displayed_page' />
               <Route exact path='/metadata' component={Metadata} className='displayed_page' />
+              <Route exact path='/edit' component={Edit} className='displayed_page' />
               <Route component={NoMatch} className='displayed_page' />
             </Switch>
           </div>
