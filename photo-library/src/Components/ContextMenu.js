@@ -100,7 +100,7 @@ class ContextMenu extends Component {
               <li onClick={this.deletePhoto}>{this.props.second}</li>
               <Link to ='/metadata'><li>{this.props.third}</li></Link>
               <li>{this.props.fourth}</li>
-
+              <li>{this.props.fifth}</li>
 
 
             </ul>

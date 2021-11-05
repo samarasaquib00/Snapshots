@@ -152,7 +152,7 @@ function PhotoLibrary() {
             <div className= 'photolibrary'>
                 <LibraryHeader />
             </div>
-            <ContextMenu handleDeleteImage={handleDeleteImage} imageArray={imageArray} first="Edit" second="Delete" third="View Photo Metadata" fourth="Make Public"/>
+            <ContextMenu handleDeleteImage={handleDeleteImage} imageArray={imageArray} first="Edit" second="Delete" third="View Photo Metadata" fourth="Make Public" fifth="Share to Social Media"/>
             <div className= 'gallery'>
 
                 {/* Display the photos in the array */}
