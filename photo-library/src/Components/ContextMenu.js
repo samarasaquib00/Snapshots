@@ -1,17 +1,25 @@
-import { Component } from "react";
+import { Component, useState } from "react";
 import React from 'react'
+
 import PhotoLibrary from "../Pages/PhotoLibrary";
+import { Link } from 'react-router-dom';
+
 class ContextMenu extends Component {
+
+  //const[target, setTarget] = useState(0);
 
   constructor(props) {
     super(props);
     this.state = {
       elementID: null,
+      target: null,
+      targetsrc: null,
       xPos: "0px",
       yPos: "0px",
       show: false,
       images: this.props.imageArray
     }
+    this.popUpState = false;
     this.handleClick = this.handleClick.bind(this);
     this.deletePhoto = this.deletePhoto.bind(this);
     }
@@ -47,7 +55,6 @@ class ContextMenu extends Component {
         if (this.state.showMenu) this.setState({ showMenu: false });
     }
 
-  
     handleContextMenu = (e) => {
         e.preventDefault();
         console.log("Hello world", e)
@@ -56,10 +63,17 @@ class ContextMenu extends Component {
         if (e.target.localName === "img") {
           this.setState({
            elementID: e.target.getAttribute("id"),
+           target: e.target,
+           targetsrc: e.target.src,
            xPos: `${e.pageX}px`,
            yPos: `${e.pageY}px`,
            showMenu: true,
          })
+         console.log("target: ", e.target);
+         let target = e.target;
+         let targetsrc = target.src;
+         //console.log("target2: ", this.state.target)
+
        }
      }
 
@@ -68,14 +82,17 @@ class ContextMenu extends Component {
 
         //console.log(e.target.getAttribute("id"))
         //const i = e.target.getAttribute("id");
-        console.log('elementId: ', this.state.elementID);
+        //console.log('elementId: ', this.state.elementID);
         this.props.handleDeleteImage(this.state.elementID)
-        console.log(this.state.elementID)
+        //console.log(this.state.elementID)
         }
-  
-
+ 
+    /*togglePopup = () => {
+      this.popUpState = !this.popUpState;
+    }*/
+    
       render() {
-        const { showMenu, xPos, yPos } = this.state;
+        const { showMenu, xPos, yPos, targetsrc } = this.state;
     
         if (showMenu)
           return (
@@ -90,11 +107,22 @@ class ContextMenu extends Component {
                 background: "white"
               }}
             >
-              <li>{this.props.first}</li>
+
+              <Link 
+                to={{
+                  pathname: '/edit',
+                  query: {targetsrc}
+                }}
+                state = {{target: this.state.target}}>
+                   <li>{this.props.first}</li> </Link>
+
               <li onClick={this.deletePhoto}>{this.props.second}</li>
-              <li>{this.props.third}</li>
+
+              <Link to ='/metadata'><li>{this.props.third}</li></Link>
+
               <li>{this.props.fourth}</li>
 
+              <li>{this.props.fifth}</li>
 
 
             </ul>

@@ -152,33 +152,14 @@ function PhotoLibrary() {
             <div className= 'photolibrary'>
                 <LibraryHeader />
             </div>
-            <ContextMenu handleDeleteImage={handleDeleteImage} imageArray={imageArray} first="Edit" second="Delete" third="View Photo Metadata" fourth="Make Public"/>
+            <ContextMenu handleDeleteImage={handleDeleteImage} imageArray={imageArray} first="Edit" second="Delete" third="View Photo Metadata" fourth="Make Public" fifth="Share to Social Media"/>
             <div className= 'gallery'>
 
                 {/* Display the photos in the array */}
                 {imageArray.map((imageElement, index) => <img onClick={imageClick} src={imageElement.image} id={index} key={index}/> )
                 }
 
-
-                {/*                 
-                <img onClick={imageClick} className='sample_photo1' src={Photo} alt="" />
-                <img onClick={imageClick} className='sample_photo2' src={Photo2} alt="" />
-                <img onClick={imageClick} className='sample_photo3' src={Photo3} alt="" />
-                <img onClick={imageClick} className='sample_photo4' src={Photo4} alt="" />
-                <img onClick={imageClick} className='sample_photo5' src={Photo5} alt="" />
-                <img onClick={imageClick} className='sample_photo6' src={Photo6} alt="" />
-                <img onClick={imageClick} className='sample_photo7' src={Photo7} alt="" />
-                <img onClick={imageClick} className='sample_photo8' src={Photo8} alt="" />
-                <img onClick={imageClick} className='sample_photo9' src={Photo9} alt="" />
-                <img onClick={imageClick} className='sample_photo10' src={Photo10} alt="" />
-                <img onClick={imageClick} className='sample_photo11' src={Photo11} alt="" />
-                <img onClick={imageClick} className='sample_photo12' src={Photo12} alt="" />
-                <img onClick={imageClick} className='sample_photo13' src={Photo13} alt="" />
-                <img onClick={imageClick} className='sample_photo14' src={Photo14} alt="" />
-                <img onClick={imageClick} className='sample_photo15' src={Photo15} alt="" />
-                <img onClick={imageClick} className='sample_photo16' src={Photo16} alt="" /> */}
-                
-
+            
 
             </div>
             <div className= 'bottom_buttons'>
