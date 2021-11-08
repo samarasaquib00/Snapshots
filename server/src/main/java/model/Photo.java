@@ -34,9 +34,9 @@ public class Photo {
     public Date dateEdited;
     public Date dateUploaded;
     //add gps later
-    public long lastEditor;
+    public int lastEditor;
     public String lastEditorName;
-    public long originalPhotoID;
+    public int originalPhotoID;
     public boolean isOriginal;
     public boolean isPublic;
 
@@ -178,7 +178,6 @@ public class Photo {
         return null;
     }
 
-    //TODO delete
     public static int deleteByID(int id) throws SQLException {
         PreparedStatement deleteStatement = null;
         Photo retrievedPhoto = null;
@@ -307,19 +306,19 @@ public class Photo {
                     System.out.println("File Path: " + filePath);
                     insertStatement.setString(1, filePath);
                 } else {
-                    throw new InsufficientArgumentsException("store requires hash generation and file extension");
+                    throw new InsufficientArgumentsException("Photo.store() requires hash generation and a file extension.");
                 }
 
                 if (fileFormat != null) {
                     insertStatement.setString(2, fileFormat);
                 } else {
-                    throw new InsufficientArgumentsException("store requires file format (mime type)");
+                    throw new InsufficientArgumentsException("Photo.store() requires file format (mime type).");
                 }
 
                 if (uploaderID > 0) {
                     insertStatement.setInt(4, uploaderID);
                 } else {
-                    throw new InsufficientArgumentsException("store requires file format (mime type)");
+                    throw new InsufficientArgumentsException("Photo.store() requires an uploader id.");
                 }
 
                 //optionally include date taken; do not throw exception
