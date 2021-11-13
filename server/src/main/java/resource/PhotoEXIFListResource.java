@@ -12,6 +12,7 @@ import model.Photo;
 import org.json.JSONObject;
 import org.restlet.ext.json.JsonRepresentation;
 import org.restlet.representation.Representation;
+import org.restlet.representation.StringRepresentation;
 import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 
@@ -75,10 +76,12 @@ public class PhotoEXIFListResource extends ServerResource {
             return null;
         }
 
+        String allEXIF = new String("");
+
         for (Directory directory : metadata.getDirectories()) {
             for (Tag tag : directory.getTags()) {
-                System.out.println(tag.getTagTypeHex());
-                System.out.format("[%s] - %s = %s\n",
+                //System.out.println(tag.getTagTypeHex());
+                allEXIF += String.format("[%s] - %s = %s\n",
                         directory.getName(), tag.getTagName(), tag.getDescription());
             }
             if (directory.hasErrors()) {
@@ -88,13 +91,16 @@ public class PhotoEXIFListResource extends ServerResource {
             }
         }
 
+        return new StringRepresentation(allEXIF);
+
 //        String exifString = new String("");
 //
 //        ExifSubIFDDirectory directorySubIFD = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
 //        if (directorySubIFD != null) {
 //            String imageWidth = directorySubIFD.getString(ExifSubIFDDirectory.TAG_EXIF_IMAGE_WIDTH);
+//
 //            if (imageWidth != null) {
-//                exifString = exifString + imageWidth.getTagName() + " - " + imageWidth.getDescription();
+//                exifString = exifString + directorySubIFD. + " - " + imageWidth + "\n";
 //            }
 //            String imageHeigth = directorySubIFD.getString(ExifSubIFDDirectory.TAG_EXIF_IMAGE_HEIGHT);
 //            String dateTime = directorySubIFD.getString(ExifSubIFDDirectory.TAG_DATETIME);
@@ -122,7 +128,7 @@ public class PhotoEXIFListResource extends ServerResource {
 
 
 
-        return null;
+        //return null;
 
     }
 }

@@ -13,17 +13,19 @@ function NewAlbum() {
         <div className='new_album'>
             <button onClick={togglePopup} className='new_album_button'>Add</button>
             {isOpen && <Popup
-                        content={<>
-                        <b>Create a New Album</b>
-                        <form>
-                        <input placeholder='Album Name'></input>
-                        <p>There are no photos for you to add to this album</p>
-                        <button onClick={togglePopup}>Create Album</button>
-                        </form>
-                        </>}
-                        handleClose={togglePopup}
+                content={<>
+                    <b>Create a New Album</b>
+                    <form>
+                    <input placeholder='Album Name'></input>
+                    <p>There are no photos for you to add to this album</p>
+                    <button onClick={togglePopup}>Create Album</button>
+                    <span></span>
+                    <b>Album Error</b>
+                    <p>Albums cannot be created at this time.</p>
+                    </form>
+                    </>}
+                handleClose={togglePopup}
             />}
-
         </div>
     )
 }
