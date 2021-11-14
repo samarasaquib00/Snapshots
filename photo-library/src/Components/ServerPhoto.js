@@ -27,6 +27,7 @@ export default class ServerPhoto extends React.Component {
         }
         //console.log(data);
         this.setState({imageURLs: photoIdArray});
+        console.log(this);
         //this.setState({updated:true});
     }
   
