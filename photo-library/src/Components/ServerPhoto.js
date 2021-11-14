@@ -23,7 +23,7 @@ export default class ServerPhoto extends React.Component {
         let photoIdArray = [];
         for(const element of data.result){
             photoIdArray.push('http://127.0.0.1:8183/api/photo/'+element.photo_id);
-            console.log(element.photo_id);
+            //console.log(element.photo_id);
         }
         //console.log(data);
         this.setState({imageURLs: photoIdArray});

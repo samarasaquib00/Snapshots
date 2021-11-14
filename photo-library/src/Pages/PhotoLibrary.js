@@ -149,7 +149,7 @@ function PhotoLibrary() {
 
     console.log('image array: ', imageArray);
 
-    async function getMetaDataList(){
+    /*async function getMetaDataList(){
         let res = await axios.get('http://127.0.0.1:8183/api/photometadatalist/')
         let data = res.data;
         let photoIdArray = [];
@@ -159,7 +159,7 @@ function PhotoLibrary() {
         }
         //console.log(data);
         return photoIdArray;
-    }
+    }*/
     //const serverPhotosArray = getMetaDataList();
     
    

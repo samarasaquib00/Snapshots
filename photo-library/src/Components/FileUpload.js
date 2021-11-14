@@ -4,7 +4,7 @@ import Popup from './Popup';
 import Button from '@mui/material/Button';
 import './FileUpload.css';
 
-const MAX_FILE_SIZE_BYTES = 500000;
+const MAX_FILE_SIZE_BYTES = 10000000;
 
 const convertNestedObjectToArray = (nestedObj) => 
 Object.keys(nestedObj).map((key) => nestedObj[key]);
@@ -51,8 +51,10 @@ const FileUpload = ({
 
     async function uploadtodb() {
         const filesAsArray = convertNestedObjectToArray(files)
+        console.log(filesAsArray);
         for(const element of filesAsArray) {
-            let res = await axios.post('127.0.0.1:8183/api/photoupload?uid=1', element)
+            console.log(typeof(element))
+            let res = await axios.post('http://127.0.0.1:8183/api/photoupload?uid=1', element, {headers: {'Content-Type': 'image/all','Access-Control-Allow-Origin': '*'}})
             let data = res.data;
             console.log(data);
         }
@@ -89,6 +91,7 @@ const FileUpload = ({
                     {Object.keys(files).map((fileName, index) => {
                         let file = files[fileName];
                         let isImageFile = file.type.split("/")[0] === 'image';
+                        //isImageFile = true; //test
                         return (
                             <div className='image_container' key={fileName}>
                                 <div>
