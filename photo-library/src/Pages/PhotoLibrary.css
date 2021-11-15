@@ -13,9 +13,11 @@
     margin-top: 20px;
     margin-left: 20px;
     align-content: center;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.gallery > img {
+.gallery > div > img {
     object-fit: contain;
     height: 200px;
     margin-top: 5px;

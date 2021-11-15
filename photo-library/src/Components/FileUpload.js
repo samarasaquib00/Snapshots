@@ -1,7 +1,10 @@
+import axios from 'axios';
 import React, { useRef, useState } from 'react';
+import Popup from './Popup';
+import Button from '@mui/material/Button';
 import './FileUpload.css';
 
-const MAX_FILE_SIZE_BYTES = 500000;
+const MAX_FILE_SIZE_BYTES = 10000000;
 
 const convertNestedObjectToArray = (nestedObj) => 
 Object.keys(nestedObj).map((key) => nestedObj[key]);
@@ -46,6 +49,23 @@ const FileUpload = ({
         }
     };
 
+    async function uploadtodb() {
+        const filesAsArray = convertNestedObjectToArray(files)
+        console.log(filesAsArray);
+        for(const element of filesAsArray) {
+            console.log(typeof(element))
+            let res = await axios.post('http://127.0.0.1:8183/api/photoupload?uid=1', element, {headers: {'Content-Type': 'image/all','Access-Control-Allow-Origin': '*'}})
+            let data = res.data;
+            console.log(data);
+        }
+    }
+
+    const [isOpen, setIsOpen] = useState(false);
+ 
+    const togglePopup = () => {
+      setIsOpen(!isOpen);
+    }
+
     return (
         <div className="upload_container">
             <div className= 'upload_box'>
@@ -71,6 +91,7 @@ const FileUpload = ({
                     {Object.keys(files).map((fileName, index) => {
                         let file = files[fileName];
                         let isImageFile = file.type.split("/")[0] === 'image';
+                        //isImageFile = true; //test
                         return (
                             <div className='image_container' key={fileName}>
                                 <div>
@@ -83,6 +104,19 @@ const FileUpload = ({
                         )
                     })}
                 </div>
+            </div>
+            <div className= 'upload_button'>
+                <Button /*component={Link} to='/photolibrary'*/ variant="contained" size="medium" onClick={uploadtodb}> {/*POST upload route here using 'files'*/}
+                 Upload
+                </Button>
+                {isOpen && <Popup
+                    content={<>
+                        <b>Upload Error</b>
+                        <p>We were unable to upload the chosen files</p>
+                        <button onClick={togglePopup}>OK</button>
+                    </>}
+                    handleClose={togglePopup}
+                />}
             </div>
         </div>
     )

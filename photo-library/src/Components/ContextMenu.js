@@ -56,11 +56,12 @@ class ContextMenu extends Component {
     }
 
     handleContextMenu = (e) => {
+      console.log(e);
         e.preventDefault();
-        console.log("Hello world", e)
       
         // if statement to determine if photo is being clicked
         if (e.target.localName === "img") {
+          console.log(e.target.getAttribute("metaInfo"))
           this.setState({
            elementID: e.target.getAttribute("id"),
            target: e.target,
@@ -69,7 +70,7 @@ class ContextMenu extends Component {
            yPos: `${e.pageY}px`,
            showMenu: true,
          })
-         console.log("target: ", e.target);
+         console.log("target: ", e);
          let target = e.target;
          let targetsrc = target.src;
          //console.log("target2: ", this.state.target)

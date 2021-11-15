@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const Images = [
-    '../test-images/img1.jpg',
+    'http://127.0.0.1:8183/api/photo/2',
     '../test-images/img2.jpg',
     '../test-images/img3.jpg',
     '../test-images/img4.jpg',
