@@ -105,8 +105,16 @@ function PhotoLibrary() {
       .then(() => {
         const images = imageArray.filter((image) => image.photoInfo.photo_id !== currentId);
         setImageArray(images);
-        alert("successfully deleted");
+        alert("Successfully Deleted");
       });
+  }
+
+  const showMetadata = () => {
+    axios
+    .get('http://127.0.0.1:8183/api/photometadata/' + currentId)
+    .then(() => {
+      //display the metadata of the photo
+    });
   }
 
   return (
@@ -141,12 +149,11 @@ function PhotoLibrary() {
 
                   <li onClick={() => deletePhoto()}>Delete</li>
 
-                  <Link to='/metadata'><li>View Photo Metadata</li></Link>
+                  <li onClick={showMetadata}>View Photo Metadata</li>
 
                   <li>Make Public</li>
 
                   <li>Share to Social Media</li>
-
 
                 </ul>
               ) : (
@@ -157,17 +164,6 @@ function PhotoLibrary() {
 
           )
         })
-        }
-      </div>
-
-
-
-      <div className='bottom_buttons'>
-        {/* put delete, share, and select buttons in this container and fix css */
-          /* Just put the buttons here, functionality is in Components */
-          /* When select button is clicked, make it so that the photos you click on are highlighted */
-          /* When the delete button is clicked, change visibility of photo and try to change sorting */
-
         }
       </div>
     </div>
