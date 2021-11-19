@@ -25,10 +25,6 @@ function PhotoLibrary() {
     setSelect(!select)
   }
 
-  //save photo metadata for display
-  const [metadata, setMetadata] = useState({date_uploaded: '', file_format: '', hash: '', 
-          is_original: false, is_public: false, photo_id: 0, uploader: 0, uploader_name: ''});
-
   const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 });
   const [currentId, setCurrentId] = useState(null);
   const [show, setShow] = useState(false);
@@ -109,21 +105,6 @@ function PhotoLibrary() {
       });
   }
 
-  const getMetadata = () => {
-    axios.get('http://127.0.0.1:8183/api/photometadata/' + currentId).then(res => {
-      let data = res.data;
-      console.log(data);
-      console.log(data.photo_id);
-      //save the metadata of the photo
-      const newobj = {date_uploaded: data.date_uploaded,
-        file_format: data.file_format, hash: data.hash, is_original: data.is_original, is_public: data.is_public,
-        photo_id: data.photo_id, uploader: data.uploader, uploader_name: data.uploader_name};
-      console.log(newobj);
-      setMetadata(newobj);
-      console.log(metadata);
-    });
-  }
-
   return (
 
     <div className='page'>
@@ -146,7 +127,6 @@ function PhotoLibrary() {
                     background: "white"
                   }}
                 >
-                  <div className='context' onClick={getMetadata}>
                     <Link
                       to={{
                         pathname: '/edit',
@@ -158,20 +138,12 @@ function PhotoLibrary() {
                   
                     <Link to={{
                       pathname: '/metadata', 
-                      date_uploaded: metadata.date_uploaded,
-                      file_format: metadata.file_format,
-                      hash: metadata.hash, 
-                      is_original: metadata.is_original, 
-                      is_public: metadata.is_public, 
-                      photo_id: metadata.photo_id, 
-                      uploader: metadata.uploader, 
-                      uploader_name: metadata.uploader_name}}>
+                      query: currentId}}>
                     <li>View Photo Metadata</li></Link>
 
                     <li>Make Public</li>
 
                     <li>Share to Social Media</li>
-                  </div>
                 </ul>
               ) : (
                 <> </>
