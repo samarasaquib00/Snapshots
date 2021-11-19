@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useRef, useState } from 'react';
-import Popup from './Popup';
+import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import './FileUpload.css';
 
@@ -58,6 +58,7 @@ const FileUpload = ({
             let data = res.data;
             console.log(data);
         }
+        alert("Successfully Uploaded");
     }
 
     const [isOpen, setIsOpen] = useState(false);
@@ -105,19 +106,13 @@ const FileUpload = ({
                     })}
                 </div>
             </div>
-            <div className= 'upload_button'>
-                <Button /*component={Link} to='/photolibrary'*/ variant="contained" size="medium" onClick={uploadtodb}> {/*POST upload route here using 'files'*/}
-                 Upload
-                </Button>
-                {isOpen && <Popup
-                    content={<>
-                        <b>Upload Error</b>
-                        <p>We were unable to upload the chosen files</p>
-                        <button onClick={togglePopup}>OK</button>
-                    </>}
-                    handleClose={togglePopup}
-                />}
-            </div>
+            <Link to= '/photolibrary'>
+                <div className= 'upload_button'>
+                    <Button variant="contained" size="medium" onClick={uploadtodb}>
+                    Upload
+                    </Button>
+                </div>
+            </Link>
         </div>
     )
 }
