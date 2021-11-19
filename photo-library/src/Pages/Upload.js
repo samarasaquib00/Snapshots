@@ -1,20 +1,11 @@
 import React, {useState} from 'react'
 import './Upload.css';
 import FileUpload from '../Components/FileUpload';
-import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
-import Popup from '../Components/Popup';
 
 function Upload() {
     const [newUserInfo, setNewUserInfo] = useState({
         profileImages: []
     });
-
-    const [isOpen, setIsOpen] = useState(false);
- 
-    const togglePopup = () => {
-      setIsOpen(!isOpen);
-    }
     
     const updateUploadedFiles = (files) =>
     setNewUserInfo({ ...newUserInfo, profileImages: files });

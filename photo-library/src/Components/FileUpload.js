@@ -61,12 +61,6 @@ const FileUpload = ({
         alert("Successfully Uploaded");
     }
 
-    const [isOpen, setIsOpen] = useState(false);
- 
-    const togglePopup = () => {
-      setIsOpen(!isOpen);
-    }
-
     return (
         <div className="upload_container">
             <div className= 'upload_box'>
