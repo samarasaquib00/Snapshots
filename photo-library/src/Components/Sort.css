@@ -41,3 +41,8 @@ display: block;
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
+
+.dropdown_menu_right {
+  right: 0;
+  left: auto;
+}

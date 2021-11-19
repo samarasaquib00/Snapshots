@@ -64,7 +64,7 @@ import 'bootstrap/dist/css/bootstrap.css';
         <DropdownToggle caret>
           Sort
         </DropdownToggle>
-        <DropdownMenu>
+        <DropdownMenu className='dropdown_menu_right'>
           <DropdownItem>Sort by Date</DropdownItem>
           <DropdownItem divider />
           <DropdownItem>Sort by Geolocation</DropdownItem>
