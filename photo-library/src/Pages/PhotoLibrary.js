@@ -14,20 +14,20 @@ function PhotoLibrary() {
   //make imagearray into state
   const [imageArray, setImageArray] = useState([])
 
-
-
   //onclick on images
   const [select, setSelect] = useState(false)
 
   //append to this list
   const [selected, setSelected] = useState([])
 
-
   const selection = () => {
     //unselect or select
     setSelect(!select)
-
   }
+
+  //save photo metadata for display
+  const [metadata, setMetadata] = useState({date_uploaded: '', file_format: '', hash: '', 
+          is_original: false, is_public: false, photo_id: 0, uploader: 0, uploader_name: ''});
 
   const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 });
   const [currentId, setCurrentId] = useState(null);
@@ -109,11 +109,18 @@ function PhotoLibrary() {
       });
   }
 
-  const showMetadata = () => {
-    axios
-    .get('http://127.0.0.1:8183/api/photometadata/' + currentId)
-    .then(() => {
-      //display the metadata of the photo
+  const getMetadata = () => {
+    axios.get('http://127.0.0.1:8183/api/photometadata/' + currentId).then(res => {
+      let data = res.data;
+      console.log(data);
+      console.log(data.photo_id);
+      //save the metadata of the photo
+      const newobj = {date_uploaded: data.date_uploaded,
+        file_format: data.file_format, hash: data.hash, is_original: data.is_original, is_public: data.is_public,
+        photo_id: data.photo_id, uploader: data.uploader, uploader_name: data.uploader_name};
+      console.log(newobj);
+      setMetadata(newobj);
+      console.log(metadata);
     });
   }
 
@@ -139,22 +146,32 @@ function PhotoLibrary() {
                     background: "white"
                   }}
                 >
+                  <div className='context' onClick={getMetadata}>
+                    <Link
+                      to={{
+                        pathname: '/edit',
+                        query: { targetsrc: imageElement.photoUrl }
+                      }}>
+                      <li>Edit</li> </Link>
 
-                  <Link
-                    to={{
-                      pathname: '/edit',
-                      query: { targetsrc: imageElement.photoUrl }
-                    }}>
-                    <li>Edit</li> </Link>
+                    <li onClick={() => deletePhoto()}>Delete</li>
+                  
+                    <Link to={{
+                      pathname: '/metadata', 
+                      date_uploaded: metadata.date_uploaded,
+                      file_format: metadata.file_format,
+                      hash: metadata.hash, 
+                      is_original: metadata.is_original, 
+                      is_public: metadata.is_public, 
+                      photo_id: metadata.photo_id, 
+                      uploader: metadata.uploader, 
+                      uploader_name: metadata.uploader_name}}>
+                    <li>View Photo Metadata</li></Link>
 
-                  <li onClick={() => deletePhoto()}>Delete</li>
+                    <li>Make Public</li>
 
-                  <li onClick={showMetadata}>View Photo Metadata</li>
-
-                  <li>Make Public</li>
-
-                  <li>Share to Social Media</li>
-
+                    <li>Share to Social Media</li>
+                  </div>
                 </ul>
               ) : (
                 <> </>
