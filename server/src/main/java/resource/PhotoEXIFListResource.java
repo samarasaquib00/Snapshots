@@ -93,7 +93,7 @@ public class PhotoEXIFListResource extends ServerResource {
 
         return new StringRepresentation(allEXIF);
 
-//        String exifString = new String("");
+//        JSONObject exifJSON = new JSONObject();
 //
 //        ExifSubIFDDirectory directorySubIFD = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
 //        if (directorySubIFD != null) {
@@ -102,6 +102,7 @@ public class PhotoEXIFListResource extends ServerResource {
 //            if (imageWidth != null) {
 //                exifString = exifString + directorySubIFD. + " - " + imageWidth + "\n";
 //            }
+//            exifJSON.append("results", )
 //            String imageHeigth = directorySubIFD.getString(ExifSubIFDDirectory.TAG_EXIF_IMAGE_HEIGHT);
 //            String dateTime = directorySubIFD.getString(ExifSubIFDDirectory.TAG_DATETIME);
 //            String dateTimeDigitized = directorySubIFD.getString(ExifSubIFDDirectory.TAG_DATETIME_DIGITIZED);
@@ -125,8 +126,8 @@ public class PhotoEXIFListResource extends ServerResource {
 //            String altitude = gpsDirectory.getString(GpsDirectory.TAG_ALTITUDE);
 //
 //        }
-
-
+//
+//
 
         //return null;
 

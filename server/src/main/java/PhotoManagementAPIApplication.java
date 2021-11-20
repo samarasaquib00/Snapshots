@@ -5,7 +5,6 @@ import org.restlet.routing.Router;
 import org.restlet.security.ChallengeAuthenticator;
 import org.restlet.security.MapVerifier;
 import org.restlet.service.CorsService;
-import org.restlet.engine.application.CorsFilter;
 import resource.*;
 
 import java.util.Arrays;
@@ -21,10 +20,6 @@ public class PhotoManagementAPIApplication extends Application {
         // Create a router
         Router router = new Router(getContext());
 
-        CorsFilter corsFilter = new CorsFilter(getContext(), router);
-        corsFilter.setAllowedOrigins(new HashSet<String>(Arrays.asList("*")));
-        corsFilter.setAllowedCredentials(true);
-
         // Defines routes; each route needs a Resource class to server the route
         router.attach("/photo/{id}", PhotoResource.class);
         router.attach("/photometadata/{id}", PhotoMetadataResource.class);
@@ -32,8 +27,22 @@ public class PhotoManagementAPIApplication extends Application {
         router.attach("/photometadatalist/", PhotoMetadataListResource.class);
         router.attach("/photodelete/{id}", PhotoDeleteResource.class);
         router.attach("/photoexiflist/{id}", PhotoEXIFListResource.class);
+        router.attach("/album/{id}", AlbumResource.class);
+        router.attach("/album", AlbumResource.class);
+        router.attach("/albumlist", AlbumListResource.class);
 
-        return corsFilter;
+
+//        ChallengeAuthenticator authenticator = new ChallengeAuthenticator(getContext(), ChallengeScheme.HTTP_BASIC, "My Realm");
+//        MapVerifier verifier = new MapVerifier();
+//        verifier.getLocalSecrets().put("user", "pass".toCharArray());
+//        authenticator.setVerifier(verifier);
+
+//        authenticator.setNext(router);
+//
+//        return authenticator;
+
+
+        return router;
     }
 
 }
