@@ -27,6 +27,7 @@ function PhotoLibrary() {
 
   const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 });
   const [currentId, setCurrentId] = useState(null);
+  const [photoObject, setPhotoObject] = useState(null);
   const [show, setShow] = useState(false);
 
   const handleContextMenu = useCallback(
@@ -34,6 +35,7 @@ function PhotoLibrary() {
       event.preventDefault();
       const currentId = event.target.getAttribute("id");
       setCurrentId(currentId)
+      setPhotoObject(event.target.src);
       setAnchorPoint({ x: event.pageX, y: event.pageY });
       setShow(true);
     },
@@ -81,6 +83,7 @@ function PhotoLibrary() {
     console.log(selected);
   }
 
+  //old delete
   const handleDeleteImage = (i) => {
     //console.log(e.target.getAttribute("id"))
     //const i = e.target.getAttribute("id");
@@ -95,6 +98,7 @@ function PhotoLibrary() {
 
   }
 
+  //new delete
   const deletePhoto = () => {
     axios
       .delete('http://127.0.0.1:8183/api/photodelete/' + currentId)
@@ -130,7 +134,7 @@ function PhotoLibrary() {
                     <Link
                       to={{
                         pathname: '/edit',
-                        query: { targetsrc: imageElement.photoUrl }
+                        query: { targetsrc: photoObject }
                       }}>
                       <li>Edit</li> </Link>
 
