@@ -199,6 +199,30 @@ public class Photo {
         }
     }
 
+    public static int updateIsPublicByID(int id, boolean isPublic) throws SQLException {
+        PreparedStatement updateStatement = null;
+
+        //try with resources
+        try (
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/photodb?" +
+                    "user=root&password=NOTSECURE")) {
+            System.out.println("is connected?: " + conn.isValid(0));
+
+            updateStatement = conn.prepareStatement("UPDATE photos " +
+                    "SET " +
+                    "is_public = ? " +
+                    "WHERE " +
+                    "photo_id = ?;");
+
+            updateStatement.setBoolean(1, isPublic);
+            updateStatement.setInt(2, id);
+
+            updateStatement.execute();
+
+            return updateStatement.getUpdateCount();
+        }
+    }
+
     public static List<Photo> retrieveListAll() throws SQLException {
         PreparedStatement photoMetadataAllStatement = null;
         ResultSet rs = null;

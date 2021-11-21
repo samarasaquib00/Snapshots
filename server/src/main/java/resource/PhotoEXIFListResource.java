@@ -92,8 +92,26 @@ public class PhotoEXIFListResource extends ServerResource {
         }
 
         return new StringRepresentation(allEXIF);
-
+//
 //        JSONObject exifJSON = new JSONObject();
+//
+//        int[] exifTagTypes = new int[] {
+//                ExifSubIFDDirectory.TAG_EXIF_IMAGE_WIDTH,
+//                ExifSubIFDDirectory.TAG_EXIF_IMAGE_HEIGHT,
+//                ExifSubIFDDirectory.TAG_DATETIME,
+//                ExifSubIFDDirectory.TAG_DATETIME_DIGITIZED,
+//                ExifSubIFDDirectory.TAG_EXPOSURE_TIME,
+//                ExifSubIFDDirectory.TAG_FNUMBER,
+//                ExifSubIFDDirectory.TAG_FOCAL_LENGTH,
+//                ExifSubIFDDirectory.TAG_EXPOSURE_BIAS,
+//                ExifSubIFDDirectory.TAG_ISO_SPEED,
+//                ExifSubIFDDirectory.TAG_FLASH,
+//                ExifSubIFDDirectory.TAG_ORIENTATION,
+//                ExifSubIFDDirectory.TAG_MAKE,
+//                ExifSubIFDDirectory.TAG_MODEL,
+//                ExifSubIFDDirectory.TAG_LENS
+//        };
+//
 //
 //        ExifSubIFDDirectory directorySubIFD = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
 //        if (directorySubIFD != null) {
@@ -102,7 +120,12 @@ public class PhotoEXIFListResource extends ServerResource {
 //            if (imageWidth != null) {
 //                exifString = exifString + directorySubIFD. + " - " + imageWidth + "\n";
 //            }
-//            exifJSON.append("results", )
+//
+//
+//
+//
+//
+//            exifJSON.append("results", );
 //            String imageHeigth = directorySubIFD.getString(ExifSubIFDDirectory.TAG_EXIF_IMAGE_HEIGHT);
 //            String dateTime = directorySubIFD.getString(ExifSubIFDDirectory.TAG_DATETIME);
 //            String dateTimeDigitized = directorySubIFD.getString(ExifSubIFDDirectory.TAG_DATETIME_DIGITIZED);
@@ -128,8 +151,8 @@ public class PhotoEXIFListResource extends ServerResource {
 //        }
 //
 //
-
-        //return null;
+//
+//        return null;
 
     }
 }
