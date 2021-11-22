@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react'
 import './PhotoLibrary.css'
 import LibraryHeader from '../Components/LibraryHeader';
 import { Link } from 'react-router-dom';
+import Popup from './Popup';
 
 // Create Array of Images
 //let imageArray = [Photo, Photo2, Photo3, Photo4, Photo6, Photo7, Photo8, Photo9, Photo10, 
@@ -18,7 +19,7 @@ function PhotoLibrary() {
   const [select, setSelect] = useState(false)
 
   //append to this list
-  const [selected, setSelected] = useState([])
+  //const [selected, setSelected] = useState([])
 
   const selection = () => {
     //unselect or select
@@ -65,23 +66,38 @@ function PhotoLibrary() {
   }, [imageArray]);
 
 
-  /* Detect photo mouse click */
+
+  
+  
+  /* Detect photo mouse click (updated for Photo Viewing Window, not Select) */
   const imageClick = (e) => {
-    console.log(e.target.attributes);
+  console.log(e.target.attributes);
     //if (select == true) {
     //setSelect(select.push(e.target))
     //}
     /* Select */
-    if (e.target.border == "0 px solid black") {
-      e.target.border = "3 px solid black";
-      //setSelected(selected.push(e.target))
-    } else { /* Deselect */
-      e.target.border = "0 px solid black";
-      const name = e.target.getAttribute("name");
+    //if (e.target.border == "0 px solid black") {
+    //  e.target.border = "3 px solid black";
+      //setSelected(selected.push(e.target))    delete this
+    //} else { /* Deselect */
+    //  e.target.border = "0 px solid black";
+    //  const name = e.target.getAttribute("name");
       //setSelected(selected.filter(pic=>pic.name!=name));
     }
-    console.log(selected);
+    //console.log(selected);
+    /* End Select */
+
+  /*
+  <Link
+    to={{
+    pathname: 'PhotoPreviewWindow,
+    query: { targetsrc: photoObject }
+    }}>
+  <li>Edit</li> </Link>
+  */
+
   }
+
 
   //old delete
   const handleDeleteImage = (i) => {
