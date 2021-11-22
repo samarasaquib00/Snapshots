@@ -2,7 +2,6 @@ import React, { useEffect, useState, useCallback } from 'react'
 import './PhotoLibrary.css'
 import LibraryHeader from '../Components/LibraryHeader';
 import { Link } from 'react-router-dom';
-import Popup from './Popup';
 
 // Create Array of Images
 //let imageArray = [Photo, Photo2, Photo3, Photo4, Photo6, Photo7, Photo8, Photo9, Photo10, 
