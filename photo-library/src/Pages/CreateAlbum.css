@@ -1,0 +1,22 @@
+.new_album_page {
+    margin-left: 15px;
+}
+
+.create_button {
+    margin-top: 15px;
+}
+
+.images {
+    margin-top: 20px;
+    margin-left: 20px;
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.images > img {
+    object-fit: contain;
+    height: 200px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
