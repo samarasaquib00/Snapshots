@@ -83,7 +83,7 @@ function PhotoLibrary() {
     //  e.target.border = "0 px solid black";
     //  const name = e.target.getAttribute("name");
       //setSelected(selected.filter(pic=>pic.name!=name));
-    }
+    
     //console.log(selected);
     /* End Select */
 
