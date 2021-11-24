@@ -45,7 +45,9 @@ function PhotoLibrary() {
       setCurrentId(currentId)
       setPhotoObject(event.target.src);
       setAnchorPoint({ x: event.pageX, y: event.pageY });
-      setShow(true);
+      if (event.target.localName === "img") {
+        setShow(true);
+      }
     },
     [setAnchorPoint]
   );
@@ -166,13 +168,9 @@ function PhotoLibrary() {
 
   return (
 
-  
-
-
+    /* SORT DROPDOWN */
     <div className='page'>
       <div className='photolibrary'>
-
-
         <div className='library_header'>
           <div className='library_header_left'>
             <h1>Photo Library</h1>
@@ -191,11 +189,8 @@ function PhotoLibrary() {
             </ButtonDropdown>
           </div>
         </div>
-
-
-
-
       </div>
+
       <div className='gallery'>
         {imageArray.map((imageElement, index) => {
           let customAttr = { 'data-photo_id': imageElement.photoInfo.photo_id }

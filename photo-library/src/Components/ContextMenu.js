@@ -22,115 +22,112 @@ class ContextMenu extends Component {
     this.popUpState = false;
     this.handleClick = this.handleClick.bind(this);
     this.deletePhoto = this.deletePhoto.bind(this);
-    }
-  
+  }
 
-  
-   /* state = {
-      xPos: "0px",
-      yPos: "0px",
-      show: false,
-      images: this.props.imageArray
-    }
+
+
+  /* state = {
+     xPos: "0px",
+     yPos: "0px",
+     show: false,
+     images: this.props.imageArray
+   }
 */
 
-    componentDidMount() {
-        document.addEventListener("click", this.handleClick);
-        document.addEventListener("contextmenu", this.handleContextMenu);
-        //document.addEventListener("click", this.deletePhoto);
+  componentDidMount() {
+    document.addEventListener("click", this.handleClick);
+    document.addEventListener("contextmenu", this.handleContextMenu);
+    //document.addEventListener("click", this.deletePhoto);
 
-        //console.log(this.props)
+    //console.log(this.props)
+
+  }
+
+
+
+  componentWillUnmount() {
+    document.removeEventListener("click", this.handleClick);
+    document.removeEventListener("contextmenu", this.handleContextMenu);
+  }
+
+  // for exiting the context menu
+  handleClick = (e) => {
+    if (this.state.showMenu) this.setState({ showMenu: false });
+  }
+
+  handleContextMenu = (e) => {
+    console.log(e);
+    e.preventDefault();
+    console.log("Hello World")
+
+    // if statement to determine if photo is being clicked
+    if (e.target.localName === "img") {
+      console.log("here")
+      console.log(e.target.getAttribute("metaInfo"))
+      this.setState({
+        elementID: e.target.getAttribute("id"),
+        target: e.target,
+        targetsrc: e.target.src,
+        xPos: `${e.pageX}px`,
+        yPos: `${e.pageY}px`,
+        showMenu: true,
+      })
+      console.log("target: ", e);
+      let target = e.target;
+      let targetsrc = target.src;
+      //console.log("target2: ", this.state.target)
 
     }
-  
-    
+  }
 
-    componentWillUnmount() {
-        document.removeEventListener("click", this.handleClick);
-        document.removeEventListener("contextmenu", this.handleContextMenu);
-    }
+  // Create Delete Function to be compatible with array
+  deletePhoto(e) {
+    this.props.handleDeleteImage(this.state.elementID)
+  }
 
-    // for exiting the context menu
-    handleClick = (e) => {
-        if (this.state.showMenu) this.setState({ showMenu: false });
-    }
+  /*togglePopup = () => {
+    this.popUpState = !this.popUpState;
+  }*/
 
-    handleContextMenu = (e) => {
-      console.log(e);
-        e.preventDefault();
-      
-        // if statement to determine if photo is being clicked
-        if (e.target.localName === "img") {
-          console.log(e.target.getAttribute("metaInfo"))
-          this.setState({
-           elementID: e.target.getAttribute("id"),
-           target: e.target,
-           targetsrc: e.target.src,
-           xPos: `${e.pageX}px`,
-           yPos: `${e.pageY}px`,
-           showMenu: true,
-         })
-         console.log("target: ", e);
-         let target = e.target;
-         let targetsrc = target.src;
-         //console.log("target2: ", this.state.target)
+  render() {
+    const { showMenu, xPos, yPos, targetsrc } = this.state;
 
-       }
-     }
+    if (showMenu)
+      return (
+        <ul
 
-    // Create Delete Function to be compatible with array
-    deletePhoto(e) {
+          className="menu"
+          style={{
+            top: yPos,
+            left: xPos,
+            position: "absolute",
+            listStyleType: "none",
+            background: "white"
+          }}
+        >
 
-        //console.log(e.target.getAttribute("id"))
-        //const i = e.target.getAttribute("id");
-        //console.log('elementId: ', this.state.elementID);
-        this.props.handleDeleteImage(this.state.elementID)
-        //console.log(this.state.elementID)
-        }
- 
-    /*togglePopup = () => {
-      this.popUpState = !this.popUpState;
-    }*/
-    
-      render() {
-        const { showMenu, xPos, yPos, targetsrc } = this.state;
-    
-        if (showMenu)
-          return (
-            <ul
+          <Link
+            to={{
+              pathname: '/edit',
+              query: { targetsrc }
+            }}
+            state={{ target: this.state.target }}>
+            <li>{this.props.first}</li> </Link>
 
-              className="menu"
-              style={{
-                top: yPos,
-                left: xPos,
-                position: "absolute",
-                listStyleType: "none",
-                background: "white"
-              }}
-            >
+          <li onClick={this.deletePhoto}>{this.props.second}</li>
 
-              <Link 
-                to={{
-                  pathname: '/edit',
-                  query: {targetsrc}
-                }}
-                state = {{target: this.state.target}}>
-                   <li>{this.props.first}</li> </Link>
+          <Link to='/metadata'><li>{this.props.third}</li></Link>
 
-              <li onClick={this.deletePhoto}>{this.props.second}</li>
+          <li>{this.props.fourth}</li>
 
-              <Link to ='/metadata'><li>{this.props.third}</li></Link>
-
-              <li>{this.props.fourth}</li>
-
-              <li>{this.props.fifth}</li>
+          <li>{this.props.fifth}</li>
 
 
-            </ul>
-          );
-        else return null;
-      }
-      
+        </ul>
+      );
+    else return null;
+  }
+
 }
 
 export default ContextMenu;
