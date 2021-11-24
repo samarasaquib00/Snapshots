@@ -26,12 +26,14 @@ public class PhotoManagementAPIApplication extends Application {
         router.attach("/photo/{id}", PhotoResource.class);
         router.attach("/photometadata/{id}", PhotoMetadataResource.class);
         router.attach("/photoupload", PhotoUploadResource.class);
-        router.attach("/photometadatalist/", PhotoMetadataListResource.class);
+        router.attach("/photometadatalist", PhotoMetadataListResource.class);
         router.attach("/photodelete/{id}", PhotoDeleteResource.class);
         router.attach("/photoexiflist/{id}", PhotoEXIFListResource.class);
         router.attach("/album/{id}", AlbumResource.class);
         router.attach("/album", AlbumResource.class);
         router.attach("/albumlist", AlbumListResource.class);
+        router.attach("/tempfavoriteupdate/{id}", PhotoMetadataTempResource.class);
+        router.attach("/albumphoto", AlbumPhotoResource.class);
 
 
 //        DigestAuthenticator authenticator = new DigestAuthenticator(getContext(), "My Realm", "My Server Key");

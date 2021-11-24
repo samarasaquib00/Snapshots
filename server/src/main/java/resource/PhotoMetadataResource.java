@@ -73,6 +73,8 @@ public class PhotoMetadataResource extends ServerResource {
         return new JsonRepresentation(photoJSON);
     }
 
+    //TODO: general update method
+
     @Post
     public Representation updateIsPublic() {
 

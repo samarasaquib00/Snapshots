@@ -83,6 +83,8 @@ public class PhotoEXIFListResource extends ServerResource {
                 //System.out.println(tag.getTagTypeHex());
                 allEXIF += String.format("[%s] - %s = %s\n",
                         directory.getName(), tag.getTagName(), tag.getDescription());
+                System.out.println(String.format("[%s] - %s = %s\n",
+                        directory.getName(), tag.getTagName(), tag.getDescription()));
             }
             if (directory.hasErrors()) {
                 for (String error : directory.getErrors()) {
@@ -91,40 +93,49 @@ public class PhotoEXIFListResource extends ServerResource {
             }
         }
 
-        return new StringRepresentation(allEXIF);
-//
-//        JSONObject exifJSON = new JSONObject();
-//
-//        int[] exifTagTypes = new int[] {
-//                ExifSubIFDDirectory.TAG_EXIF_IMAGE_WIDTH,
-//                ExifSubIFDDirectory.TAG_EXIF_IMAGE_HEIGHT,
-//                ExifSubIFDDirectory.TAG_DATETIME,
-//                ExifSubIFDDirectory.TAG_DATETIME_DIGITIZED,
-//                ExifSubIFDDirectory.TAG_EXPOSURE_TIME,
-//                ExifSubIFDDirectory.TAG_FNUMBER,
-//                ExifSubIFDDirectory.TAG_FOCAL_LENGTH,
-//                ExifSubIFDDirectory.TAG_EXPOSURE_BIAS,
-//                ExifSubIFDDirectory.TAG_ISO_SPEED,
-//                ExifSubIFDDirectory.TAG_FLASH,
-//                ExifSubIFDDirectory.TAG_ORIENTATION,
-//                ExifSubIFDDirectory.TAG_MAKE,
-//                ExifSubIFDDirectory.TAG_MODEL,
-//                ExifSubIFDDirectory.TAG_LENS
-//        };
-//
-//
-//        ExifSubIFDDirectory directorySubIFD = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
-//        if (directorySubIFD != null) {
+//        return new StringRepresentation(allEXIF);
+
+        JSONObject exifJSON = new JSONObject();
+
+        int[] exifTagTypes = new int[] {
+                ExifSubIFDDirectory.TAG_EXIF_IMAGE_WIDTH,
+                ExifSubIFDDirectory.TAG_EXIF_IMAGE_HEIGHT,
+                ExifSubIFDDirectory.TAG_DATETIME,
+                ExifSubIFDDirectory.TAG_DATETIME_DIGITIZED,
+                ExifSubIFDDirectory.TAG_EXPOSURE_TIME,
+                ExifSubIFDDirectory.TAG_FNUMBER,
+                ExifSubIFDDirectory.TAG_FOCAL_LENGTH,
+                ExifSubIFDDirectory.TAG_EXPOSURE_BIAS,
+                ExifSubIFDDirectory.TAG_ISO_SPEED,
+                ExifSubIFDDirectory.TAG_FLASH,
+                ExifSubIFDDirectory.TAG_ORIENTATION,
+                ExifSubIFDDirectory.TAG_MAKE,
+                ExifSubIFDDirectory.TAG_MODEL,
+                ExifSubIFDDirectory.TAG_LENS
+        };
+
+
+
+
+        for (int i = 0; i < exifTagTypes.length; i++) {
+            System.out.println();
+        }
+
+
+        ExifSubIFDDirectory directorySubIFD = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
+        if (directorySubIFD != null) {
 //            String imageWidth = directorySubIFD.getString(ExifSubIFDDirectory.TAG_EXIF_IMAGE_WIDTH);
-//
+
 //            if (imageWidth != null) {
 //                exifString = exifString + directorySubIFD. + " - " + imageWidth + "\n";
 //            }
-//
-//
-//
-//
-//
+
+
+            for (int i = 0; i < exifTagTypes.length; i++) {
+                exifJSON.put(directorySubIFD.getTagName(exifTagTypes[i]), directorySubIFD.getString(exifTagTypes[i]));
+            }
+
+
 //            exifJSON.append("results", );
 //            String imageHeigth = directorySubIFD.getString(ExifSubIFDDirectory.TAG_EXIF_IMAGE_HEIGHT);
 //            String dateTime = directorySubIFD.getString(ExifSubIFDDirectory.TAG_DATETIME);
@@ -140,7 +151,7 @@ public class PhotoEXIFListResource extends ServerResource {
 //            String make = directorySubIFD.getString(ExifSubIFDDirectory.TAG_MAKE);
 //            String model = directorySubIFD.getString(ExifSubIFDDirectory.TAG_MODEL);
 //            //String lens = directorySubIFD.getString(ExifSubIFDDirectory.TAG_LENS);
-//        }
+        }
 //        GpsDirectory gpsDirectory = metadata.getFirstDirectoryOfType(GpsDirectory.class);
 //
 //        if (gpsDirectory != null) {
@@ -149,10 +160,10 @@ public class PhotoEXIFListResource extends ServerResource {
 //            String altitude = gpsDirectory.getString(GpsDirectory.TAG_ALTITUDE);
 //
 //        }
-//
-//
-//
-//        return null;
+
+        System.out.println(exifJSON.toString());
+
+        return null;
 
     }
 }

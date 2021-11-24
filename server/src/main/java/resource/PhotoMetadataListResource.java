@@ -13,10 +13,23 @@ public class PhotoMetadataListResource extends ServerResource {
 
     @Get("json")
     public JsonRepresentation represent() {
+
+        String stringFavorite = getQueryValue("favorite");
+        boolean getFavorites;
+
+        if ("true".equalsIgnoreCase(stringFavorite)) {
+            System.out.println("fav: true");
+            getFavorites = true;
+        } else {
+            getFavorites = false;
+            System.out.println("fav false");
+        }
+
+
         JSONObject json = new JSONObject();
 
         try {
-            ArrayList<Photo> list = (ArrayList<Photo>) Photo.retrieveListAll();
+            ArrayList<Photo> list = (ArrayList<Photo>) Photo.retrieveListAll(getFavorites);
 
             if(list != null) {
                 for (Photo p: list) {
