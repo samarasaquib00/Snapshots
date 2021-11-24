@@ -149,12 +149,12 @@ function PhotoLibrary() {
     if (sortOrder === "ascending") {
       
       copyArray.sort((image1, image2) => {
-        return new Date(image1.photoInfo.date_uploaded) - new Date(image2.photoInfo.date_uploaded);
+        return new Date(image1.photoInfo.date_taken) - new Date(image2.photoInfo.date_taken);
       })
       console.log("sorting in ascending order")
     } else {
       copyArray.sort((image1, image2) => {
-        return new Date(image2.photoInfo.date_uploaded) - new Date(image1.photoInfo.date_uploaded);
+        return new Date(image2.photoInfo.date_taken) - new Date(image1.photoInfo.date_taken);
       })
       console.log("sorting in descending order")
     }
@@ -162,7 +162,7 @@ function PhotoLibrary() {
     console.log("copyArray: ", copyArray)
     setImageArray(copyArray)
     setValue(value + 1)
-    //get the date_uploaded from the photos in image array
+    //get the date_taken from the photos in image array
   }
 
 

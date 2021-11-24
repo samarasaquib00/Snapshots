@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import './FileUpload.css';
 
-const MAX_FILE_SIZE_BYTES = 10000000;
+const MAX_FILE_SIZE_BYTES = 10000000000;
 
 const convertNestedObjectToArray = (nestedObj) => 
 Object.keys(nestedObj).map((key) => nestedObj[key]);
