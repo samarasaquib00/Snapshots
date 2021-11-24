@@ -12,6 +12,8 @@ function Metadata() {
     useEffect(() => {
         axios.get('http://127.0.0.1:8183/api/photometadata/' + query).then(res => {
           let data = res.data;
+          console.log(res);
+          console.log(res.data);
           //save the metadata of the photo
           const newobj = {date_uploaded: data.date_uploaded,
             file_format: data.file_format, hash: data.hash, is_original: data.is_original, is_public: data.is_public,
