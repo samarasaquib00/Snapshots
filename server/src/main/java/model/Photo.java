@@ -39,6 +39,7 @@ public class Photo {
     public int originalPhotoID;
     public boolean isOriginal;
     public boolean isPublic;
+    public boolean isFavorite;
 
     //general method for returning sql row to object???
     public Photo() {
@@ -199,7 +200,56 @@ public class Photo {
         }
     }
 
-    public static List<Photo> retrieveListAll() throws SQLException {
+    public static int updateIsPublicByID(int id, boolean isPublic) throws SQLException {
+        PreparedStatement updateStatement = null;
+
+        //try with resources
+        try (
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/photodb?" +
+                    "user=root&password=NOTSECURE")) {
+            System.out.println("is connected?: " + conn.isValid(0));
+
+            updateStatement = conn.prepareStatement("UPDATE photos " +
+                    "SET " +
+                    "is_public = ? " +
+                    "WHERE " +
+                    "photo_id = ?;");
+
+            updateStatement.setBoolean(1, isPublic);
+            updateStatement.setInt(2, id);
+
+            updateStatement.execute();
+
+            return updateStatement.getUpdateCount();
+        }
+    }
+
+    public static int updateIsFavoriteByID(int id, boolean isFavorite) throws SQLException {
+        PreparedStatement updateStatement = null;
+
+        //try with resources
+        try (
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/photodb?" +
+                        "user=root&password=NOTSECURE")) {
+            System.out.println("is connected?: " + conn.isValid(0));
+
+            updateStatement = conn.prepareStatement("UPDATE photos " +
+                    "SET " +
+                    "is_favorite = ? " +
+                    "WHERE " +
+                    "photo_id = ?;");
+
+            updateStatement.setBoolean(1, isFavorite);
+            updateStatement.setInt(2, id);
+
+            updateStatement.execute();
+
+            return updateStatement.getUpdateCount();
+        }
+    }
+
+
+    public static List<Photo> retrieveListAll(boolean getFavorites) throws SQLException {
         PreparedStatement photoMetadataAllStatement = null;
         ResultSet rs = null;
         Photo retrievedPhoto = null;
@@ -212,15 +262,32 @@ public class Photo {
             /* query gets a single row or less from the photos table matching the id, and joins the username of the
              * uploader and the last editor in the result. this is another try with resources
              */
-            photoMetadataAllStatement = conn.prepareStatement("SELECT " +
+
+            String queryFavorites = "SELECT " +
                     "p.*, " +
                     "u.username AS uploader_username, " +
                     "le.username AS last_editor_username " +
                     "FROM photos AS p " +
                     "LEFT JOIN users AS u ON p.uploader = u.user_id " +
                     "LEFT JOIN users AS le ON p.last_editor = le.user_id " +
-                    "ORDER BY p.date_uploaded ASC;");
+                    "WHERE p.is_favorite = 1 " +
+                    "ORDER BY p.date_uploaded ASC;";
 
+            String queryNormal = "SELECT " +
+                    "p.*, " +
+                    "u.username AS uploader_username, " +
+                    "le.username AS last_editor_username " +
+                    "FROM photos AS p " +
+                    "LEFT JOIN users AS u ON p.uploader = u.user_id " +
+                    "LEFT JOIN users AS le ON p.last_editor = le.user_id " +
+                    "ORDER BY p.date_uploaded ASC;";
+
+
+            if(getFavorites) {
+                photoMetadataAllStatement = conn.prepareStatement(queryFavorites);
+            } else {
+                photoMetadataAllStatement = conn.prepareStatement(queryNormal);
+            }
 
             rs = photoMetadataAllStatement.executeQuery();
 

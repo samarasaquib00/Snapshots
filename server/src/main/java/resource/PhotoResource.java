@@ -2,6 +2,7 @@ package resource;
 
 import org.json.JSONObject;
 import org.restlet.data.MediaType;
+import org.restlet.ext.json.JsonRepresentation;
 import org.restlet.representation.FileRepresentation;
 import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
@@ -75,5 +76,7 @@ public class PhotoResource extends ServerResource {
 
         return null;
     }
+
+
 
 }

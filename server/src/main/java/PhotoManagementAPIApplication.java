@@ -1,6 +1,8 @@
 import org.restlet.Application;
 import org.restlet.Restlet;
 import org.restlet.data.ChallengeScheme;
+import org.restlet.ext.crypto.DigestAuthenticator;
+import org.restlet.ext.crypto.DigestVerifier;
 import org.restlet.routing.Router;
 import org.restlet.security.ChallengeAuthenticator;
 import org.restlet.security.MapVerifier;
@@ -24,12 +26,20 @@ public class PhotoManagementAPIApplication extends Application {
         router.attach("/photo/{id}", PhotoResource.class);
         router.attach("/photometadata/{id}", PhotoMetadataResource.class);
         router.attach("/photoupload", PhotoUploadResource.class);
-        router.attach("/photometadatalist/", PhotoMetadataListResource.class);
+        router.attach("/photometadatalist", PhotoMetadataListResource.class);
         router.attach("/photodelete/{id}", PhotoDeleteResource.class);
         router.attach("/photoexiflist/{id}", PhotoEXIFListResource.class);
         router.attach("/album/{id}", AlbumResource.class);
         router.attach("/album", AlbumResource.class);
         router.attach("/albumlist", AlbumListResource.class);
+        router.attach("/tempfavoriteupdate/{id}", PhotoMetadataTempResource.class);
+        router.attach("/albumphoto", AlbumPhotoResource.class);
+
+
+//        DigestAuthenticator authenticator = new DigestAuthenticator(getContext(), "My Realm", "My Server Key");
+//        DigestVerifier
+
+
 
 
 //        ChallengeAuthenticator authenticator = new ChallengeAuthenticator(getContext(), ChallengeScheme.HTTP_BASIC, "My Realm");

@@ -7,7 +7,9 @@ import org.restlet.Request;
 import org.restlet.data.Form;
 import org.restlet.data.Parameter;
 import org.restlet.ext.json.JsonRepresentation;
+import org.restlet.representation.Representation;
 import org.restlet.resource.Get;
+import org.restlet.resource.Post;
 import org.restlet.resource.ServerResource;
 import java.sql.*;
 
@@ -69,6 +71,56 @@ public class PhotoMetadataResource extends ServerResource {
         JSONObject photoJSON = photo.toJSON();
         System.out.println(photoJSON.toString());
         return new JsonRepresentation(photoJSON);
+    }
+
+    //TODO: general update method
+
+    @Post
+    public Representation updateIsPublic() {
+
+        String stringIsPublic = getQueryValue("is_public");
+        boolean isPublic;
+
+        if ("true".equalsIgnoreCase(stringIsPublic)) {
+            System.out.println("is public: true");
+            isPublic = true;
+        } else if ("false".equalsIgnoreCase(stringIsPublic)) {
+            System.out.println("is public: false");
+            isPublic = false;
+        } else {
+            System.out.println("bad is_public");
+            return new JsonRepresentation("{\"error_no\":16,\"error\":\"bad is_public formatting; is_public needs \"}");
+        }
+
+
+        String stringID = (String) getRequest().getAttributes().get("id");
+        int id;
+
+        try {
+            id = Integer.parseInt(stringID);
+        } catch (NumberFormatException e) {
+            JSONObject jsonError = new JSONObject();
+            jsonError.put("error_no", 1);
+            jsonError.put("error", "Incorrectly formatted id");
+            return new JsonRepresentation(jsonError);
+        }
+        if (id <= 0) {
+            JSONObject jsonError = new JSONObject();
+            jsonError.put("error_no", 2);
+            jsonError.put("error", "id cannot be 0 or less");
+            return new JsonRepresentation(jsonError);
+        }
+
+        int updateCount = 0;
+        try {
+            updateCount = Photo.updateIsPublicByID(id, isPublic);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Generic SQL error");
+            return new JsonRepresentation("{\"error_no\":15,\"error\":\"generic sql error\"}");
+        }
+
+        return new JsonRepresentation("{\"error_no\":0,\"status\":\"success\",\"update_count\":" + updateCount +  "}");
     }
 
 }
