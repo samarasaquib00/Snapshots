@@ -64,7 +64,7 @@ function PhotoLibrary() {
   });
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8183/api/photometadatalist/').then(res => {
+    axios.get('http://127.0.0.1:8183/api/photometadatalist').then(res => {
       let data = res.data;
       //console.log("data: ", data)
       let photoIdArray = [];
