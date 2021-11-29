@@ -164,6 +164,24 @@ function PhotoLibrary() {
     setValue(value + 1)
     //get the date_taken from the photos in image array
   }
+  
+    /* Function to Sort photos by date uploaded */
+  const sortPhotosUploadDate = (sortOrder) => {
+    //make a copy of image array
+    const copyArray = [...imageArray];
+    if (sortOrder === "upload") {
+      copyArray.sort((image1, image2) => {
+        return new Date(image1.photoInfo.date_uploaded) - new Date(image2.photoInfo.date_uploaded);
+      })
+      console.log("sorting by upload date")
+    }
+    console.log("imageArray: ", imageArray)
+    console.log("copyArray: ", copyArray)
+    setImageArray(copyArray)
+    setValue(value + 1)
+    //get the date_taken from the photos in image array
+  }
+
 
 
   return (
@@ -185,6 +203,8 @@ function PhotoLibrary() {
                 <DropdownItem onClick={()=>sortPhotos("ascending")}>Sort by Date (Ascending)</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem onClick={()=>sortPhotos("descending")}>Sort by Date (Descending)</DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem onClick={() => sortPhotosUploadDate("upload")}>Revert to Uploaded Order</DropdownItem>
               </DropdownMenu>
             </ButtonDropdown>
           </div>
