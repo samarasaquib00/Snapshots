@@ -15,9 +15,11 @@ function PhotoAlbum() {
           let data = res.data;
           console.log(data);
           let albumIdArray = [];
+          if(data.result !== undefined) {
           for (const element of data.result) {
             albumIdArray.push({ albumUrl: 'http://127.0.0.1:8183/api/album/' + element.album_id, album_id: element.album_id, name: element.name});
-        }
+            }
+          }
           console.log(albumIdArray);
           setAlbumArray(albumIdArray);
         })
