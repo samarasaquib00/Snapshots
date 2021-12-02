@@ -1,12 +1,12 @@
-import React, {useState, useEffect, useCallback, forEach} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import './AddToAlbum.css'
 
 const axios = require('axios');
 
 export default function AddToAlbum() {
     const {location, query} = useLocation();
     const [imageArray, setImageArray] = useState([])
-    const [selected, setSelected] = useState([]);
     const [currentId, setCurrentId] = useState(null);
     const [photoObject, setPhotoObject] = useState(null);
 
@@ -29,7 +29,6 @@ export default function AddToAlbum() {
             setPhotoObject(event.target.src);
             if (event.target.border == "0 px solid blue") {
                 event.target.border = "3 px solid blue";
-                setSelected(selected.push(currentId))
                 axios.post('http://127.0.0.1:8183/api/albumphoto?album_id=' + query + '&photo_id=' + currentId).then(res => {
                     let data = res.data;
                     console.log(data);
@@ -37,50 +36,20 @@ export default function AddToAlbum() {
             } else { /* Deselect */
                 //does not remove id from array
                 event.target.border = "0 px solid blue";
-                const images = selected.filter(id => id !== currentId);
-                console.log(images);
-                setSelected(images);
+                axios.delete('http://127.0.0.1:8183/api/albumphoto?album_id=' + query + '&photo_id=' + currentId).then(res => {
+                    let data = res.data;
+                    console.log(data);
+                  })
             /* End Select */
             }
-            console.log(currentId);
-            console.log(selected);
         }, []
       );
 
-      {/*
-      async function addToAlbum() {
-          console.log("calling add to album")
-
-          let idArray = selected.map((id) =>
-          axios.post('http://127.0.0.1:8183/api/albumphoto?album_id=' + query + '&photo_id=' + id).then(res => {
-            let data = res.data;
-            console.log(data);
-          })
-        );
-
-            selected.forEach(postRequest);
-          let idArray = [selected];
-          console.log(idArray);
-          for(const element of idArray) {
-            axios.post('http://127.0.0.1:8183/api/albumphoto?album_id=' + query + '&photo_id=' + element).then(res => {
-                let data = res.data;
-                console.log(data);
-            })
-          }
-      }
-
-      function postRequest(id, index, array) {
-        axios.post('http://127.0.0.1:8183/api/albumphoto?album_id=' + query + '&photo_id=' + id).then(res => {
-            let data = res.data;
-            console.log(data);
-        })
-      }
-
-    */}
-
     return (
-        <div>
-            <h1>Add Photos To Album</h1>
+        <div className='add_photos_page'>
+            <div className='add_photos_header'>
+                <h1>Add Photos To Album</h1>
+            </div>
             <div className='images'>
                 {imageArray.map((imageElement, index) => {
                     let customAttr = { 'data-photo_id': imageElement.photoInfo.photo_id }
@@ -90,9 +59,8 @@ export default function AddToAlbum() {
                 )}
             </div>
             <Link to='albums'>
-                <div className='add_photos_to_album_button'>
-                    <button //onClick={addToAlbum}
-                    >Add Selected</button>
+                <div className='button_container'>
+                    <button className='add_photos_to_album_button'>Add Selected</button>
                 </div>
             </Link>
         </div>

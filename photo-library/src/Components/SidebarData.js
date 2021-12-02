@@ -4,6 +4,7 @@ import PhotoIcon from '@mui/icons-material/Photo';
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import PhotoAlbumIcon from '@mui/icons-material/PhotoAlbum';
 import PublicIcon from '@mui/icons-material/Public';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export const SidebarData = [
    {
@@ -30,6 +31,11 @@ export const SidebarData = [
          title: "Shared",
          icon: <PublicIcon />,
          link: "/shared",
+    },
+    {
+         title: "Favorites",
+         icon: <FavoriteIcon />,
+         link: "/favorites",
     }
 ] 
  

@@ -165,6 +165,12 @@ function PhotoLibrary() {
     //get the date_taken from the photos in image array
   }
 
+  const addtoFavorites = () => {
+    axios.post('http://127.0.0.1:8183/api/tempfavoriteupdate/' + currentId + '?is_favorite=true').then(res => {
+      let data = res.data;
+      console.log(data);
+    })
+  }
 
   return (
 
@@ -225,6 +231,8 @@ function PhotoLibrary() {
                   <li>Make Public</li>
 
                   <li>Share to Social Media</li>
+
+                  <li onClick={addtoFavorites}>Add to Favorites</li>
                 </ul>
               ) : (
                 <> </>

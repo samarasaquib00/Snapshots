@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import './ViewAlbum.css'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -8,18 +8,44 @@ function ViewAlbum() {
 
     const {location, query} = useLocation();
     const [imageArray, setImageArray] = useState([])
+    const [currentId, setCurrentId] = useState(null);
+    const [photoObject, setPhotoObject] = useState(null);
 
     useEffect(() => {
         axios.get('http://127.0.0.1:8183/api/albumphoto?album_id=' + query).then(res => {
           let data = res.data;
           let photoIdArray = [];
-          for (const element of data.albumphotos) {
-            photoIdArray.push({ photoUrl: 'http://127.0.0.1:8183/api/photo/' + element});
+          console.log(data.albumphotos);
+          if(data.albumphotos !== undefined) {
+            for (const element of data.albumphotos) {
+                photoIdArray.push({ photoUrl: 'http://127.0.0.1:8183/api/photo/' + element, photoInfo: element });
+            }
+            setImageArray(photoIdArray);
           }
-          setImageArray(photoIdArray);
         })
     }, []);
 
+    const imageClick = useCallback(
+        (event) => {
+            event.preventDefault();
+            const currentId = event.target.getAttribute("id");
+            setPhotoObject(event.target.src);
+            if (event.target.border == "0 px solid blue") {
+                event.target.border = "3 px solid blue";
+                setCurrentId(currentId);
+                console.log(currentId);
+            } else { /* Deselect */
+                event.target.border = "0 px solid blue";
+            /* End Select */
+            }
+    }, []);
+
+    const deletePhoto = () => {
+        axios.delete('http://127.0.0.1:8183/api/albumphoto?album_id=' + query + '&photo_id=' + currentId).then(res => {
+            let data = res.data;
+            console.log(data);
+        })
+    }
 
     return (
         <div className='view_album_page'>
@@ -29,16 +55,20 @@ function ViewAlbum() {
                 </div>
                 <div className='view_header_right'>
                     <Link to={{pathname: '/addtoalbum',
-                        query: query}}>
+                               query: query}}>
                         <button className='add_photos_button'>Add Photos</button>
                     </Link>
-                    <button className='delete_photos_button'>Delete Photos</button>
+                    <Link to={{pathname: '/albums',
+                               query: query}}>
+                        <button className='delete_photos_button' onClick={deletePhoto}>Delete Photos</button>
+                    </Link>
                 </div>
             </div>
             <div className='album_photos'>
                 {imageArray.map((imageElement, index) => {
+                    let customAttr = { 'data-photo_id': imageElement.photoInfo }
                     return (
-                    <img key={index} src={imageElement.photoUrl} alt=""/>
+                    <img key={index} src={imageElement.photoUrl} alt="" {...customAttr} id={imageElement.photoInfo} onClick={imageClick}/>
                     )}
                 )}
             </div>

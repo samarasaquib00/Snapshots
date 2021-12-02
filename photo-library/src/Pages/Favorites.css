@@ -1,27 +1,23 @@
-.view_album_page {
-    margin-left: 15px;
-    width: 100vw;
-}
-
-.view_header {
+.favorites_header {
     display: flex;
     align-items: center;
     justify-content: space-between; 
     width: 100%;
 }
 
-.view_header_left {
+.favorites_header_left {
     display: flex;
     align-items: center;
+    margin-left: 15px;
 }
 
-.view_header_right {
+.favorites_header_right {
     display: flex;
     align-items: center;
     margin-right: 15px;
 }
 
-.add_photos_button {
+.favorite_delete {
     background-color: #60646c;
     color: white;
     padding: 7px 32px;
@@ -34,20 +30,7 @@
     cursor: pointer;
 }
 
-.delete_photos_button {
-    background-color: #60646c;
-    color: white;
-    padding: 7px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 6px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-
-.album_photos {
+.images {
     margin-top: 20px;
     margin-left: 20px;
     align-content: center;
@@ -55,7 +38,7 @@
     flex-wrap: wrap;
 }
 
-.album_photos > img {
+.images > div > img {
     object-fit: contain;
     height: 200px;
     margin-top: 5px;

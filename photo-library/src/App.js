@@ -18,8 +18,7 @@ import PhotoLibrary from './Pages/PhotoLibrary';
 import CreateAlbum from './Pages/CreateAlbum';
 import ViewAlbum from './Pages/ViewAlbum';
 import AddToAlbum from './Pages/AddToAlbum';
-
-
+import Favorites from './Pages/Favorites';
 
 /*
 const instance = axios.create({
@@ -88,6 +87,7 @@ function App() {
               <Route exact path='/createalbum' component={CreateAlbum} className='displayed_page' />
               <Route exact path='/viewalbum' component={ViewAlbum} className='displayed_page' />
               <Route exact path='/addtoalbum' component={AddToAlbum} className='displayed_page' />
+              <Route exact path='/favorites' component={Favorites} className='displayed_page' />
               <Route component={NoMatch} className='displayed_page' />
             </Switch>
           </div>
