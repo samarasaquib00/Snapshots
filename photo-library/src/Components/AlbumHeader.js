@@ -14,8 +14,6 @@ function AlbumHeader() {
                 </div>
                 <div className= 'album_header_right'>
                     <Add />
-                    <Sort />
-                    <Delete />
                 </div>
             </div>
         </div>
