@@ -190,6 +190,13 @@ function PhotoLibrary() {
     })
   }
 
+  const makePublic = () => {
+      axios.post('http://127.0.0.1:8183/api/photometadata/' + currentId + "?is_public=true").then(res => {
+      let data = res.data;
+      console.log(data);
+    })
+  }
+
   return (
 
     /* SORT DROPDOWN */
@@ -248,7 +255,7 @@ function PhotoLibrary() {
                   }}>
                     <li>View Photo Metadata</li></Link>
 
-                  <li>Make Public</li>
+                  <li onClick={makePublic}>Make Public</li>
 
                   <li>Share to Social Media</li>
 

@@ -100,13 +100,11 @@ const FileUpload = ({
                     })}
                 </div>
             </div>
-            <Link to= '/photolibrary'>
                 <div className= 'upload_button'>
                     <Button variant="contained" size="medium" onClick={uploadtodb}>
                     Upload
                     </Button>
                 </div>
-            </Link>
         </div>
     )
 }
