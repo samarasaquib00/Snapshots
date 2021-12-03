@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class PhotoTest {
 
@@ -112,7 +113,7 @@ public class PhotoTest {
         //photo.hash = Hex.decodeHex("bd7ceb08adbf82ce793f9b5067df4e55d6a9d5657c80d7b8e26230498716786c");
         photo.uploaderID = 1;
         photo.uploaderName = "evan";
-        photo.dateTaken = new Date(1636010845240L);
+        photo.dateTaken = new Timestamp(1636010845240L);
 
         photo.isOriginal = false;
         photo.isPublic = false;
@@ -132,7 +133,7 @@ public class PhotoTest {
         photo.hash = Hex.decodeHex("bd7ceb08adbf82ce793f9b5067df4e55d6a9d5657c80d7b8e26230498716786c");
         photo.uploaderID = 1;
         photo.uploaderName = "evan";
-        photo.dateTaken = new Date(1636010845240L);
+        photo.dateTaken = new Timestamp(1636010845240L);
 
         photo.isOriginal = false;
         photo.isPublic = false;
@@ -152,7 +153,7 @@ public class PhotoTest {
         photo.hash = Hex.decodeHex("bd7ceb08adbf82ce793f9b5067df4e55d6a9d5657c80d7b8e26230498716786c");
         photo.uploaderID = 1;
         photo.uploaderName = "evan";
-        photo.dateTaken = new Date(1636010845240L);
+        photo.dateTaken = new Timestamp(1636010845240L);
 
         photo.isOriginal = false;
         photo.isPublic = false;
@@ -172,7 +173,7 @@ public class PhotoTest {
         //no uploader id
         //photo.uploaderID = 1;
         photo.uploaderName = "evan";
-        photo.dateTaken = new Date(1636010845240L);
+        photo.dateTaken = new Timestamp(1636010845240L);
 
         photo.isOriginal = false;
         photo.isPublic = false;
