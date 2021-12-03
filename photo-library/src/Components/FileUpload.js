@@ -58,7 +58,7 @@ const FileUpload = ({
             let data = res.data;
             console.log(data);
         }
-        alert("Successfully Uploaded");
+        alert("Successfully Uploaded");//edit to add error messages
     }
 
     return (

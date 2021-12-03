@@ -198,6 +198,7 @@ function PhotoLibrary() {
       axios.post('http://127.0.0.1:8183/api/photometadata/' + currentId + "?is_public=false").then(res => {
       let data = res.data;
       console.log(data);
+      window.location.reload();
     })
   }
 
