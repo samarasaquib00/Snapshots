@@ -1,14 +1,19 @@
 .edit_page {
     width: 100%;
     padding: 20px;
+    overflow: auto;
 }
 
 .edit_page_header {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .edit {
-    margin-top: 100px;
     color: lightgray;
+}
+
+.edit-image {
+    max-width: 50%;
 }

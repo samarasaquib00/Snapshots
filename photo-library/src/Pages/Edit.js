@@ -19,7 +19,7 @@ function Edit() {
             </div>
             <div className='edit'>
                 <p>Click on edit options to edit photo</p>
-                <img src={query.targetsrc} />
+                <img class="edit-image" src={query.targetsrc} />
                 <Crop />
                 <Exposure />
                 <Filter />

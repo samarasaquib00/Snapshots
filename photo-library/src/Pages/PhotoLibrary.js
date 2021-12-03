@@ -5,6 +5,10 @@ import '../Components/LibraryHeader.css'
 import { Link } from 'react-router-dom';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import Popup from '../Components/Popup';
+import ImagePopup from '../Components/ImagePopup';
+import '../Components/Header.css'
+
 
 // Create Array of Images
 //let imageArray = [Photo, Photo2, Photo3, Photo4, Photo6, Photo7, Photo8, Photo9, Photo10, 
@@ -71,9 +75,9 @@ function PhotoLibrary() {
       for (const element of data.result) {
         photoIdArray.push({ photoUrl: 'http://127.0.0.1:8183/api/photo/' + element.photo_id, photoInfo: element });
       }
-        if (photoIdArray.length != imageArray.length) {
-          setImageArray(photoIdArray);
-        }
+      if (photoIdArray.length != imageArray.length) {
+        setImageArray(photoIdArray);
+      }
     })
     console.log("running useEffect")
   }, [imageArray]);   //infinite loop because imagearray keeps getting updated on line 70
@@ -82,6 +86,11 @@ function PhotoLibrary() {
 
 
 
+  const [isOpen, setIsOpen] = useState(false);
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  }
+  const [imageToDisplay, setImageToDisplay] = useState(null);
 
   /* Detect photo mouse click (updated for Photo Viewing Window, not Select) */
   const imageClick = (e) => {
@@ -97,6 +106,9 @@ function PhotoLibrary() {
     //  e.target.border = "0 px solid black";
     //  const name = e.target.getAttribute("name");
     //setSelected(selected.filter(pic=>pic.name!=name));
+    setImageToDisplay(e.target);
+    togglePopup();
+
 
     //console.log(selected);
     /* End Select */
@@ -147,7 +159,7 @@ function PhotoLibrary() {
     //make a copy of image array
     const copyArray = [...imageArray];
     if (sortOrder === "ascending") {
-      
+
       copyArray.sort((image1, image2) => {
         return new Date(image1.photoInfo.date_taken) - new Date(image2.photoInfo.date_taken);
       })
@@ -164,8 +176,8 @@ function PhotoLibrary() {
     setValue(value + 1)
     //get the date_taken from the photos in image array
   }
-  
-    /* Function to Sort photos by date uploaded */
+
+  /* Function to Sort photos by date uploaded */
   const sortPhotosUploadDate = (sortOrder) => {
     //make a copy of image array
     const copyArray = [...imageArray];
@@ -191,7 +203,7 @@ function PhotoLibrary() {
   }
 
   const makePublic = () => {
-      axios.post('http://127.0.0.1:8183/api/photometadata/' + currentId + "?is_public=true").then(res => {
+    axios.post('http://127.0.0.1:8183/api/photometadata/' + currentId + "?is_public=true").then(res => {
       let data = res.data;
       console.log(data);
     })
@@ -213,9 +225,9 @@ function PhotoLibrary() {
                 Sort
               </DropdownToggle>
               <DropdownMenu className='dropdown_menu_right'>
-                <DropdownItem onClick={()=>sortPhotos("ascending")}>Sort by Date (Ascending)</DropdownItem>
+                <DropdownItem onClick={() => sortPhotos("ascending")}>Sort by Date (Ascending)</DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem onClick={()=>sortPhotos("descending")}>Sort by Date (Descending)</DropdownItem>
+                <DropdownItem onClick={() => sortPhotos("descending")}>Sort by Date (Descending)</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem onClick={() => sortPhotosUploadDate("upload")}>Revert to Uploaded Order</DropdownItem>
               </DropdownMenu>
@@ -265,6 +277,20 @@ function PhotoLibrary() {
                 <> </>
               )}
               <img onClick={imageClick} src={imageElement.photoUrl} {...customAttr} id={imageElement.photoInfo.photo_id} key={index} />
+              {console.log("image element: ", imageElement)}
+              {isOpen && <ImagePopup
+
+                content={<>
+                  <div class="popup-image-wrapper">
+                    <img class="popup-image" src={imageToDisplay.src}></img>
+                  </div>
+
+
+                </>}
+                handleClose={togglePopup}
+              />}
+
+
             </div>
 
           )

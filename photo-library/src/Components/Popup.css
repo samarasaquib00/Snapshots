@@ -1,38 +1,91 @@
 .popup_container {
-    position: fixed;
-    background: #00000050;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-  }
-   
-  .popup_box {
-    position: relative;
-    width: 70%;
-    margin: 0 auto;
-    height: auto;
-    max-height: 70vh;
-    margin-top: calc(100vh - 85vh - 20px);
-    background: #fff;
-    border-radius: 4px;
-    padding: 20px;
-    border: 1px solid #999;
-    overflow: auto;
-  }
+  position: fixed;
+  background: #00000050;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+ 
+.popup_box {
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
+  height: auto;
+  max-height: 70vh;
+  margin-top: calc(100vh - 85vh - 20px);
+  background: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  border: 1px solid #999;
+  overflow: auto;
+}
 
-  .close_icon {
-    content: 'x';
-    cursor: pointer;
-    position: fixed;
-    right: calc(15% - 30px);
-    top: calc(100vh - 85vh - 33px);
-    background: #ededed;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    line-height: 20px;
-    text-align: center;
-    border: 1px solid #999;
-    font-size: 20px;
-  }
+.popup_image_box {
+  position: relative;
+  /* min-width: 300px;
+  min-height: 300px; */
+  margin: auto auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 80vh;
+  height: 80vh;
+  margin-top: 10vh;
+  background: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  border: 1px solid #999;
+  overflow: hidden;
+}
+
+.popup-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.popup-image-wrapper {
+  /* width: 0; */
+  width: 100%; 
+  height: 100%;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.close_icon {
+content: 'x';
+cursor: pointer;
+position: fixed;
+right: calc(15% - 30px);
+top: calc(100vh - 85vh - 33px);
+background: #ededed;
+width: 25px;
+height: 25px;
+border-radius: 50%;
+line-height: 20px;
+text-align: center;
+border: 1px solid #999;
+font-size: 20px;
+}
+
+.image_close_icon {
+content: 'x';
+cursor: pointer;
+position: absolute;
+right: 32px;
+top: 32px;
+background: #ededed;
+width: 25px;
+height: 25px;
+border-radius: 50%;
+line-height: 20px;
+text-align: center;
+border: 1px solid #999;
+font-size: 20px;
+}
