@@ -239,6 +239,7 @@ function PhotoLibrary() {
     { auth: { username: username_cookie, password: password_cookie} }).then(res => {
       let data = res.data;
       console.log(data);
+      alert("Photo added to favorites");
     })
   }
 
@@ -250,6 +251,7 @@ function PhotoLibrary() {
     { auth: { username: username_cookie, password: password_cookie} }).then(res => {
       let data = res.data;
       console.log(data);
+      alert("Photo successfully made public");
     })
   }
 
@@ -323,13 +325,10 @@ function PhotoLibrary() {
               <img onClick={imageClick} src={imageElement.photoUrl} {...customAttr} id={imageElement.photoInfo.photo_id} key={index} />
               {/*console.log("image element: ", imageElement)*/}
               {isOpen && <ImagePopup
-
                 content={<>
                   <div class="popup-image-wrapper">
                     <img class="popup-image" src={imageToDisplay.src}></img>
                   </div>
-
-
                 </>}
                 handleClose={togglePopup}
               />}

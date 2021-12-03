@@ -232,6 +232,8 @@ function PhotoLibrary() {
     { auth: { username: username_cookie, password: password_cookie} }).then(res => {
       let data = res.data;
       console.log(data);
+      alert("Photo successfully made private");
+      window.location.reload();
     })
   }
 

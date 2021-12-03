@@ -59,6 +59,7 @@ function Favorites() {
         { auth: { username: username_cookie, password: password_cookie} }).then(res => {
             let data = res.data;
             console.log(data);
+            alert("Photo removed from favorites");
         })
     }
 
