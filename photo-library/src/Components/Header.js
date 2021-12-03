@@ -10,6 +10,18 @@ function Header() {
   
     const toggle = () => setOpen(!dropdownOpen);
 
+    function deleteAllCookies() {
+        var cookies = document.cookie.split(";");
+    
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i];
+            var eqPos = cookie.indexOf("=");
+            var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+        console.log("after clearing: ", document.cookie)
+    }
+
     return (
         <div className='header'>
             <div className='header_left'>
@@ -27,6 +39,10 @@ function Header() {
                         <Link to ='/signup'><DropdownItem>Sign Up</DropdownItem> </Link>
                         <DropdownItem divider />
                         <Link to ='/settings'><DropdownItem>Settings</DropdownItem> </Link>
+                        <DropdownItem divider />
+                        <Link to ='/'><DropdownItem onClick={deleteAllCookies}>Log Out</DropdownItem></Link>
+
+
                     </DropdownMenu>
                 </ButtonDropdown>
                 </div>

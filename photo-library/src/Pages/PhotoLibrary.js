@@ -66,21 +66,50 @@ function PhotoLibrary() {
     };
   });
 
+  /* Get the cookies */
+  function getCookie(c_name) {
+    var c_value = " " + document.cookie;
+    var c_start = c_value.indexOf(" " + c_name + "=");
+    if (c_start == -1) {
+        c_value = null;
+    }
+    else {
+        c_start = c_value.indexOf("=", c_start) + 1;
+        var c_end = c_value.indexOf(";", c_start);
+        if (c_end == -1) {
+            c_end = c_value.length;
+        }
+        c_value = unescape(c_value.substring(c_start,c_end));
+    }
+    return c_value;
+  }
+
+
+
+
   useEffect(() => {
-    axios.get('http://127.0.0.1:8183/api/photometadatalist').then(res => {
-      let data = res.data;
-      //console.log("data: ", data)
-      let photoIdArray = [];
-      for (const element of data.result) {
-        photoIdArray.push({ photoUrl: 'http://127.0.0.1:8183/api/photo/' + element.photo_id, photoInfo: element });
-      }
-      if (photoIdArray.length != imageArray.length) {
-        setImageArray(photoIdArray);
-      }
-    })
+
+    var username_cookie = getCookie("username")
+    var password_cookie = getCookie("password")
+    console.log("username_cookie: ", username_cookie, "    password_cookie: ", password_cookie)
+    console.log("photolibrary.js cookie log: ", document.cookie);
+    axios.get('http://127.0.0.1:8183/api/photometadatalist',
+      { auth: { username: username_cookie, password: password_cookie} }).then(res => {
+        let data = res.data;
+        //console.log("data: ", data)
+        let photoIdArray = [];
+        for (const element of data.result) {
+          photoIdArray.push({ photoUrl: `http://127.0.0.1:8183/public/photo/` + element.photo_id, photoInfo: element });
+          console.log("photoURL: ",`http://127.0.0.1:8183/public/photo/` + element.photo_id)
+
+        }
+        if (photoIdArray.length != imageArray.length) {
+          setImageArray(photoIdArray);
+        }
+      })
     console.log("running useEffect")
   }, [imageArray]);   //infinite loop because imagearray keeps getting updated on line 70
-  // 
+
 
 
 
@@ -141,9 +170,15 @@ function PhotoLibrary() {
   }
 
   //new delete
+
+
   const deletePhoto = () => {
+
+    var username_cookie = getCookie("username")
+    var password_cookie = getCookie("password")
+
     axios
-      .delete('http://127.0.0.1:8183/api/photodelete/' + currentId)
+      .delete('http://127.0.0.1:8183/api/photodelete/' + currentId, { auth: { username: username_cookie, password: password_cookie} })
       .then(() => {
         const images = imageArray.filter((image) => image.photoInfo.photo_id !== currentId);
         setImageArray(images);
@@ -163,7 +198,7 @@ function PhotoLibrary() {
         return new Date(image2.photoInfo.date_taken) - new Date(image1.photoInfo.date_taken);
       })
       console.log("sorting in ascending order")
-    } 
+    }
     if (sortOrder === "descending") {
       copyArray.sort((image1, image2) => {
         return new Date(image1.photoInfo.date_taken) - new Date(image2.photoInfo.date_taken);
@@ -177,7 +212,7 @@ function PhotoLibrary() {
     //get the date_taken from the photos in image array
   }
 
-  
+
 
   /* Function to Sort photos by date uploaded */
   const sortPhotosUploadDate = (sortOrder) => {
@@ -198,15 +233,21 @@ function PhotoLibrary() {
 
 
   const addtoFavorites = () => {
-    axios.post('http://127.0.0.1:8183/api/tempfavoriteupdate/' + currentId + '?is_favorite=true').then(res => {
+    var username_cookie = getCookie("username")
+    var password_cookie = getCookie("password")
+    axios.post('http://127.0.0.1:8183/api/tempfavoriteupdate/' + currentId + '?is_favorite=true', null,
+    { auth: { username: username_cookie, password: password_cookie} }).then(res => {
       let data = res.data;
       console.log(data);
     })
-    alert("Successfully Added to Favorites");
   }
 
   const makePublic = () => {
-    axios.post('http://127.0.0.1:8183/api/photometadata/' + currentId + "?is_public=true").then(res => {
+    var username_cookie = getCookie("username")
+    var password_cookie = getCookie("password")
+
+    axios.post('http://127.0.0.1:8183/api/photometadata/' + currentId + "?is_public=true", null, 
+    { auth: { username: username_cookie, password: password_cookie} }).then(res => {
       let data = res.data;
       console.log(data);
     })

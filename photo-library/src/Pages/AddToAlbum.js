@@ -10,8 +10,32 @@ export default function AddToAlbum() {
     const [currentId, setCurrentId] = useState(null);
     const [photoObject, setPhotoObject] = useState(null);
 
+
+    /* Get the cookies */
+    function getCookie(c_name) {
+        var c_value = " " + document.cookie;
+        var c_start = c_value.indexOf(" " + c_name + "=");
+        if (c_start == -1) {
+            c_value = null;
+        }
+        else {
+            c_start = c_value.indexOf("=", c_start) + 1;
+            var c_end = c_value.indexOf(";", c_start);
+            if (c_end == -1) {
+                c_end = c_value.length;
+            }
+            c_value = unescape(c_value.substring(c_start, c_end));
+        }
+        return c_value;
+    }
+
+
     useEffect(() => {
-        axios.get('http://127.0.0.1:8183/api/photometadatalist').then(res => {
+        var username_cookie = getCookie("username")
+        var password_cookie = getCookie("password")
+        
+        axios.get('http://127.0.0.1:8183/api/photometadatalist', 
+        { auth: { username: username_cookie, password: password_cookie} }).then(res => {
           let data = res.data;
           let photoIdArray = [];
           for (const element of data.result) {
@@ -23,20 +47,25 @@ export default function AddToAlbum() {
 
     const imageClick = useCallback(
         (event) => {
+            var username_cookie = getCookie("username")
+            var password_cookie = getCookie("password")
+
             event.preventDefault();
             const currentId = event.target.getAttribute("id");
             setCurrentId(currentId)
             setPhotoObject(event.target.src);
             if (event.target.border == "0 px solid blue") {
                 event.target.border = "3 px solid blue";
-                axios.post('http://127.0.0.1:8183/api/albumphoto?album_id=' + query + '&photo_id=' + currentId).then(res => {
+                axios.post('http://127.0.0.1:8183/api/albumphoto?album_id=' + query + '&photo_id=' + currentId, null, 
+                { auth: { username: username_cookie, password: password_cookie} }).then(res => {
                     let data = res.data;
                     console.log(data);
                   })
             } else { /* Deselect */
                 //does not remove id from array
                 event.target.border = "0 px solid blue";
-                axios.delete('http://127.0.0.1:8183/api/albumphoto?album_id=' + query + '&photo_id=' + currentId).then(res => {
+                axios.delete('http://127.0.0.1:8183/api/albumphoto?album_id=' + query + '&photo_id=' + currentId,
+                { auth: { username: username_cookie, password: password_cookie} }).then(res => {
                     let data = res.data;
                     console.log(data);
                   })
@@ -44,10 +73,6 @@ export default function AddToAlbum() {
             }
         }, []
       );
-
-    const sendMessage = () => {
-        alert("Album successfully edited");
-    }
 
     return (
         <div className='add_photos_page'>
@@ -64,7 +89,7 @@ export default function AddToAlbum() {
             </div>
             <Link to='albums'>
                 <div className='button_container'>
-                    <button className='add_photos_to_album_button' onClick={sendMessage}>Add Selected</button>
+                    <button className='add_photos_to_album_button'>Add Selected</button>
                 </div>
             </Link>
         </div>

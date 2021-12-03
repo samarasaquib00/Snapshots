@@ -10,8 +10,30 @@ function PhotoAlbum() {
 
     const [albumArray, setAlbumArray] = useState([])
 
+
+        /* Get the cookies */
+        function getCookie(c_name) {
+            var c_value = " " + document.cookie;
+            var c_start = c_value.indexOf(" " + c_name + "=");
+            if (c_start == -1) {
+                c_value = null;
+            }
+            else {
+                c_start = c_value.indexOf("=", c_start) + 1;
+                var c_end = c_value.indexOf(";", c_start);
+                if (c_end == -1) {
+                    c_end = c_value.length;
+                }
+                c_value = unescape(c_value.substring(c_start, c_end));
+            }
+            return c_value;
+        }
+
     useEffect(() => {
-        axios.get('http://127.0.0.1:8183/api/albumlist').then(res => {
+        var username_cookie = getCookie("username")
+        var password_cookie = getCookie("password")
+
+        axios.get('http://127.0.0.1:8183/api/albumlist', { auth: { username: username_cookie, password: password_cookie} }).then(res => {
           let data = res.data;
           console.log(data);
           let albumIdArray = [];
