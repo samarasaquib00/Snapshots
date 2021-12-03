@@ -225,11 +225,11 @@ function PhotoLibrary() {
                 Sort
               </DropdownToggle>
               <DropdownMenu className='dropdown_menu_right'>
-                <DropdownItem onClick={() => sortPhotos("ascending")}>Sort by Date (Ascending)</DropdownItem>
+                <DropdownItem onClick={() => sortPhotos("ascending")}>Newest First</DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem onClick={() => sortPhotos("descending")}>Sort by Date (Descending)</DropdownItem>
+                <DropdownItem onClick={() => sortPhotos("descending")}>Oldest First</DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem onClick={() => sortPhotosUploadDate("upload")}>Revert to Uploaded Order</DropdownItem>
+                <DropdownItem onClick={() => sortPhotosUploadDate("upload")}>By Upload Date</DropdownItem>
               </DropdownMenu>
             </ButtonDropdown>
           </div>
