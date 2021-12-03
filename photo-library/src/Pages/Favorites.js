@@ -28,6 +28,7 @@ function Favorites() {
         axios.post('http://127.0.0.1:8183/api/tempfavoriteupdate/' + currentId + '?is_favorite=false').then(res => {
             let data = res.data;
             console.log(data);
+            alert("Photo Removed From Favorites");
         })
     }
 

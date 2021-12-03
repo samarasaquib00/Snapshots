@@ -199,6 +199,7 @@ function PhotoLibrary() {
     axios.post('http://127.0.0.1:8183/api/tempfavoriteupdate/' + currentId + '?is_favorite=true').then(res => {
       let data = res.data;
       console.log(data);
+      alert("Photo Added to Favorites");
     })
   }
 
@@ -206,6 +207,7 @@ function PhotoLibrary() {
     axios.post('http://127.0.0.1:8183/api/photometadata/' + currentId + "?is_public=true").then(res => {
       let data = res.data;
       console.log(data);
+      alert("Photo Made Public");
     })
   }
 

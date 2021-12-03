@@ -44,6 +44,7 @@ function ViewAlbum() {
         axios.delete('http://127.0.0.1:8183/api/albumphoto?album_id=' + query + '&photo_id=' + currentId).then(res => {
             let data = res.data;
             console.log(data);
+            alert("Photo Removed from Album");
         })
     }
 
