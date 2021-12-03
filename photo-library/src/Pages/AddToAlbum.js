@@ -39,7 +39,7 @@ export default function AddToAlbum() {
           let data = res.data;
           let photoIdArray = [];
           for (const element of data.result) {
-            photoIdArray.push({ photoUrl: 'http://127.0.0.1:8183/api/photo/' + element.photo_id, photoInfo: element });
+            photoIdArray.push({ photoUrl: 'http://127.0.0.1:8183/public/photo/' + element.photo_id, photoInfo: element });
           }
           setImageArray(photoIdArray);
         })
