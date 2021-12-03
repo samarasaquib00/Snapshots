@@ -68,7 +68,7 @@ public class PhotoUploadResource extends ServerResource {
                 dateTaken = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL);
                 if (dateTaken != null) {
                     System.out.println("dateTaken: " + dateTaken);
-                    photo.dateTaken = new java.sql.Date(dateTaken.getTime());
+                    photo.dateTaken = new java.sql.Timestamp(dateTaken.getTime());
                 }
             }
 

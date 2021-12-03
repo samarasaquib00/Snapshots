@@ -30,9 +30,9 @@ public class Photo {
     public byte[] hash;
     public int uploaderID;
     public String uploaderName;
-    public Date dateTaken;
+    public java.sql.Timestamp dateTaken;
     public Date dateEdited;
-    public Date dateUploaded;
+    public java.sql.Timestamp dateUploaded;
     //add gps later
     public int lastEditor;
     public String lastEditorName;
@@ -64,7 +64,7 @@ public class Photo {
 //        LocalDateTime dt = LocalDateTime.parse(dateTimeString, format);
 
 
-        photo.dateUploaded = rs.getDate("date_uploaded");
+        photo.dateUploaded = rs.getTimestamp("date_uploaded");
         photo.isPublic = rs.getBoolean("is_public");
         photo.isOriginal = rs.getBoolean("is_original");
 
@@ -87,7 +87,7 @@ public class Photo {
             System.out.println("no date_edited");
         }
 
-        photo.dateTaken = rs.getDate("date_taken");
+        photo.dateTaken = rs.getTimestamp("date_taken");
         if (photo.dateTaken == null) {
             System.out.println("no date_taken");
         }
@@ -137,7 +137,7 @@ public class Photo {
                 rs.getBinaryStream("hash").readNBytes(retrievedPhoto.hash, 0, 32);
                 retrievedPhoto.uploaderID = rs.getInt("uploader");
                 retrievedPhoto.uploaderName = rs.getString("uploader_username");
-                retrievedPhoto.dateUploaded = rs.getDate("date_uploaded");
+                retrievedPhoto.dateUploaded = rs.getTimestamp("date_uploaded");
                 retrievedPhoto.isPublic = rs.getBoolean("is_public");
                 retrievedPhoto.isOriginal = rs.getBoolean("is_original");
 
@@ -160,7 +160,7 @@ public class Photo {
                     System.out.println("no date_edited");
                 }
 
-                retrievedPhoto.dateTaken = rs.getDate("date_taken");
+                retrievedPhoto.dateTaken = rs.getTimestamp("date_taken");
                 if (retrievedPhoto.dateTaken == null) {
                     System.out.println("no date_taken");
                 }
@@ -390,7 +390,7 @@ public class Photo {
 
                 //optionally include date taken; do not throw exception
                 if (dateTaken != null) {
-                    insertStatement.setDate(5, dateTaken);
+                    insertStatement.setTimestamp(5, dateTaken);
                 } else {
                     insertStatement.setNull(5, Types.NULL);
                 }

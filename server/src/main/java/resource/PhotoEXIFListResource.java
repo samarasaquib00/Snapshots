@@ -93,8 +93,6 @@ public class PhotoEXIFListResource extends ServerResource {
             }
         }
 
-//        return new StringRepresentation(allEXIF);
-
         JSONObject exifJSON = new JSONObject();
 
         int[] exifTagTypes = new int[] {
@@ -114,56 +112,30 @@ public class PhotoEXIFListResource extends ServerResource {
                 ExifSubIFDDirectory.TAG_LENS
         };
 
-
-
-
-        for (int i = 0; i < exifTagTypes.length; i++) {
-            System.out.println();
-        }
+        int[] gpsExifTagTypes = new int[] {
+                GpsDirectory.TAG_LATITUDE,
+                GpsDirectory.TAG_LONGITUDE,
+                GpsDirectory.TAG_ALTITUDE
+        };
 
 
         ExifSubIFDDirectory directorySubIFD = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
         if (directorySubIFD != null) {
-//            String imageWidth = directorySubIFD.getString(ExifSubIFDDirectory.TAG_EXIF_IMAGE_WIDTH);
-
-//            if (imageWidth != null) {
-//                exifString = exifString + directorySubIFD. + " - " + imageWidth + "\n";
-//            }
-
-
             for (int i = 0; i < exifTagTypes.length; i++) {
                 exifJSON.put(directorySubIFD.getTagName(exifTagTypes[i]), directorySubIFD.getString(exifTagTypes[i]));
             }
-
-
-//            exifJSON.append("results", );
-//            String imageHeigth = directorySubIFD.getString(ExifSubIFDDirectory.TAG_EXIF_IMAGE_HEIGHT);
-//            String dateTime = directorySubIFD.getString(ExifSubIFDDirectory.TAG_DATETIME);
-//            String dateTimeDigitized = directorySubIFD.getString(ExifSubIFDDirectory.TAG_DATETIME_DIGITIZED);
-//            String dateTimeOriginal = directorySubIFD.getString(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL);
-//            String exposureTime = directorySubIFD.getString(ExifSubIFDDirectory.TAG_EXPOSURE_TIME);
-//            String fNumber = directorySubIFD.getString(ExifSubIFDDirectory.TAG_FNUMBER);
-//            String focalLength = directorySubIFD.getString(ExifSubIFDDirectory.TAG_FOCAL_LENGTH);
-//            String exposureBias = directorySubIFD.getString(ExifSubIFDDirectory.TAG_EXPOSURE_BIAS);
-//            String isoSpeed = directorySubIFD.getString(ExifSubIFDDirectory.TAG_ISO_SPEED);
-//            String flash = directorySubIFD.getString(ExifSubIFDDirectory.TAG_FLASH);
-//            String orientation = directorySubIFD.getString(ExifSubIFDDirectory.TAG_ORIENTATION);
-//            String make = directorySubIFD.getString(ExifSubIFDDirectory.TAG_MAKE);
-//            String model = directorySubIFD.getString(ExifSubIFDDirectory.TAG_MODEL);
-//            //String lens = directorySubIFD.getString(ExifSubIFDDirectory.TAG_LENS);
         }
-//        GpsDirectory gpsDirectory = metadata.getFirstDirectoryOfType(GpsDirectory.class);
-//
-//        if (gpsDirectory != null) {
-//            String latitude = gpsDirectory.getString(GpsDirectory.TAG_LATITUDE);
-//            String longitude = gpsDirectory.getString(GpsDirectory.TAG_LONGITUDE);
-//            String altitude = gpsDirectory.getString(GpsDirectory.TAG_ALTITUDE);
-//
-//        }
+
+        GpsDirectory gpsDirectory = metadata.getFirstDirectoryOfType(GpsDirectory.class);
+        if (gpsDirectory != null) {
+            for (int i = 0; i < gpsExifTagTypes.length; i++) {
+                exifJSON.put(gpsDirectory.getTagName(gpsExifTagTypes[i]), gpsDirectory.getString(gpsExifTagTypes[i]));
+            }
+        }
 
         System.out.println(exifJSON.toString());
 
-        return null;
+        return new JsonRepresentation(exifJSON);
 
     }
 }
