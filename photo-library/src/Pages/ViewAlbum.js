@@ -43,7 +43,7 @@ function ViewAlbum() {
             console.log(data.albumphotos);
             if (data.albumphotos !== undefined) {
                 for (const element of data.albumphotos) {
-                    photoIdArray.push({ photoUrl: 'http://127.0.0.1:8183/api/photo/' + element, photoInfo: element });
+                    photoIdArray.push({ photoUrl: 'http://127.0.0.1:8183/public/photo/' + element, photoInfo: element });
                 }
                 setImageArray(photoIdArray);
             }
