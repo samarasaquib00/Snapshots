@@ -1,14 +1,19 @@
+.favorites_page {
+    width: 100vw;
+}
+
 .favorites_header {
     display: flex;
     align-items: center;
     justify-content: space-between; 
     width: 100%;
+    margin-top: 5px;
 }
 
 .favorites_header_left {
     display: flex;
     align-items: center;
-    margin-left: 15px;
+    margin-left: 20px;
 }
 
 .favorites_header_right {

@@ -1,6 +1,5 @@
 .photolibrary {
     padding: 0;
-    margin-left: 10px;
 }
 
 .library_header {
@@ -11,7 +10,7 @@
 
 .gallery {
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 10px;
     align-content: center;
     display: flex;
     flex-wrap: wrap;

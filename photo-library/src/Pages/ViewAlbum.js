@@ -45,6 +45,7 @@ function ViewAlbum() {
             let data = res.data;
             console.log(data);
         })
+        alert("Photo Successfully Deleted")
     }
 
     return (

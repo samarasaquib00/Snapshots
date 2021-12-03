@@ -45,6 +45,10 @@ export default function AddToAlbum() {
         }, []
       );
 
+    const sendMessage = () => {
+        alert("Album successfully edited");
+    }
+
     return (
         <div className='add_photos_page'>
             <div className='add_photos_header'>
@@ -60,7 +64,7 @@ export default function AddToAlbum() {
             </div>
             <Link to='albums'>
                 <div className='button_container'>
-                    <button className='add_photos_to_album_button'>Add Selected</button>
+                    <button className='add_photos_to_album_button' onClick={sendMessage}>Add Selected</button>
                 </div>
             </Link>
         </div>

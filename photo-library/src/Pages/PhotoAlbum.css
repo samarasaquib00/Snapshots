@@ -1,11 +1,11 @@
 .page {
     width: 100vw;
     height: 100vh;
+    margin-top: 5px;
 }
 
 .photoAlbum {
     padding: 0;
-    margin-left: 10px;
 }
 
 .album_header {
@@ -16,7 +16,6 @@
 
 .album_gallery {
     margin-top: 20px;
-    margin-left: 20px;
     align-content: center;
     display: flex;
 }

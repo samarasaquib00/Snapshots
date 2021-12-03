@@ -202,6 +202,7 @@ function PhotoLibrary() {
       let data = res.data;
       console.log(data);
     })
+    alert("Successfully Added to Favorites");
   }
 
   const makePublic = () => {
