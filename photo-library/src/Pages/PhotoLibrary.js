@@ -5,7 +5,6 @@ import '../Components/LibraryHeader.css'
 import { Link } from 'react-router-dom';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-import Popup from '../Components/Popup';
 import ImagePopup from '../Components/ImagePopup';
 import '../Components/Header.css'
 
@@ -161,21 +160,24 @@ function PhotoLibrary() {
     if (sortOrder === "ascending") {
 
       copyArray.sort((image1, image2) => {
-        return new Date(image1.photoInfo.date_taken) - new Date(image2.photoInfo.date_taken);
+        return new Date(image2.photoInfo.date_taken) - new Date(image1.photoInfo.date_taken);
       })
       console.log("sorting in ascending order")
-    } else {
+    } 
+    if (sortOrder === "descending") {
       copyArray.sort((image1, image2) => {
-        return new Date(image2.photoInfo.date_taken) - new Date(image1.photoInfo.date_taken);
+        return new Date(image1.photoInfo.date_taken) - new Date(image2.photoInfo.date_taken);
       })
       console.log("sorting in descending order")
     }
-    console.log("imageArray: ", imageArray)
-    console.log("copyArray: ", copyArray)
+    //console.log("imageArray: ", imageArray)
+    //console.log("copyArray: ", copyArray)
     setImageArray(copyArray)
     setValue(value + 1)
     //get the date_taken from the photos in image array
   }
+
+  
 
   /* Function to Sort photos by date uploaded */
   const sortPhotosUploadDate = (sortOrder) => {
@@ -277,7 +279,7 @@ function PhotoLibrary() {
                 <> </>
               )}
               <img onClick={imageClick} src={imageElement.photoUrl} {...customAttr} id={imageElement.photoInfo.photo_id} key={index} />
-              {console.log("image element: ", imageElement)}
+              {/*console.log("image element: ", imageElement)*/}
               {isOpen && <ImagePopup
 
                 content={<>
