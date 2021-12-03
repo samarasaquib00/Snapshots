@@ -36,23 +36,32 @@ public class PhotoManagementAPIApplication extends Application {
         router.attach("/albumphoto", AlbumPhotoResource.class);
 
 
+        ChallengeAuthenticator authenticator = new ChallengeAuthenticator(getContext(), ChallengeScheme.HTTP_BASIC, "My Realm");
+
+        MapVerifier verifier = new MapVerifier();
+        verifier.getLocalSecrets().put("username", "password".toCharArray());
+
+        //TestVerifier is the custom database verifier, replace with DatabaseVerifier class later
+        //TestVerifier verifier = new TestVerifier();
+
+        authenticator.setVerifier(verifier);
+        authenticator.setNext(router);
+        return authenticator;
+
+
+//        Digest Stuff
 //        DigestAuthenticator authenticator = new DigestAuthenticator(getContext(), "My Realm", "My Server Key");
-//        DigestVerifier
-
-
-
-
-//        ChallengeAuthenticator authenticator = new ChallengeAuthenticator(getContext(), ChallengeScheme.HTTP_BASIC, "My Realm");
-//        MapVerifier verifier = new MapVerifier();
-//        verifier.getLocalSecrets().put("user", "pass".toCharArray());
-//        authenticator.setVerifier(verifier);
-
-//        authenticator.setNext(router);
 //
+//        MapVerifier verifier = new FakeMapVerifier();
+//        verifier.getLocalSecrets().put("username", "password".toCharArray());
+//        authenticator.setWrappedVerifier(verifier);
+//
+//        authenticator.setNext(router);
 //        return authenticator;
 
 
-        return router;
+
+        //return router;
     }
 
 }
